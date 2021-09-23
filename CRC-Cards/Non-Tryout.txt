@@ -1,7 +1,8 @@
-Class: Tryout (Parent Class: Qualifier)
+Class: Non-Tryout (Parent Class: Qualifier)
 
 Responsibilites
-- 
+- Compile teams and their respective point total
+- Display teams immediately
 
 Collaborators:
-- 
+- Debater

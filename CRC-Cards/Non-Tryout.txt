@@ -1,1 +1,7 @@
+Class: Tryout (Parent Class: Qualifier)
 
+Responsibilites
+- 
+
+Collaborators:
+- 

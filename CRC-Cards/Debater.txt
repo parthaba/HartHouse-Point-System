@@ -1,5 +1,12 @@
-Class:
+Class: Debater
 
 Responsibility:
+- Total relevant points (4 semesters and which ones if requested)
+- Tournaments attended
+- Points earned for each tournament
+- Points earned for each semester
+- Top earners (and how many points each)
 
 Collaborator:
+Qualifiers
+Extract

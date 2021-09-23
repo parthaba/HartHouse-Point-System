@@ -1,4 +1,4 @@
-Class: Tryout.txt
+Class: Tryout
 
 Responsibilites:
 - Display prequal information

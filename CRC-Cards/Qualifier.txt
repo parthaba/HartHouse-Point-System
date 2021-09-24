@@ -1,0 +1,16 @@
+Class: Qualifier (Subclass: Tryout, Non-Tryout)
+
+Responsibility:
+Compile teams and their respective point total
+Rank top x teams by points
+Use wins to calculate point total
+Store number of teams that can be sent
+Determine the field/importance of the qualifier
+Determine qualifier score
+Calculate number of wins needed to qualify
+
+Collaborator:
+Extract
+Debater
+Tryout
+Non-Tryout

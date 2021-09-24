@@ -1,0 +1,12 @@
+Class: Tryout
+
+Responsibilites:
+- Display prequal information
+  - Display current rankings
+  - Display what they need to qualify
+  
+- Display post-qual information
+  - Who qualifies for the tournament
+  
+  Collaborator:
+  Debater

@@ -71,9 +71,6 @@ def find_entry_debater_id(debater_id: int) -> List[dict]:
             if debater_id == entry['id_debater']:
                 return_list.append(entry)
 
-        if not return_list:
-            raise ValueError
-
         return return_list
 
 

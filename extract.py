@@ -30,7 +30,7 @@ def delete_entry(id: int, id_debater: int, name: str, tournament: str, semester:
     with open('tournament_records.txt') as json_file:
         tournament_records = json.load(json_file)
 
-        entry = find_entry(id)
+        entry = find_entry_id(id)
 
         tournament_records['entry'].remove(
             {
@@ -47,7 +47,7 @@ def delete_entry(id: int, id_debater: int, name: str, tournament: str, semester:
     update_debater_data(id_debater, name)
 
 
-def find_entry(id: int) -> dict:
+def find_entry_id(id: int) -> dict:
     """Find a data entry in the master file using its id."""
     with open('tournament_records.txt') as json_file:
         tournament_records = json.load(json_file)
@@ -58,6 +58,23 @@ def find_entry(id: int) -> dict:
                 return entry
 
         raise ValueError
+
+
+def find_entry_debater_id(debater_id: int) -> List[dict]:
+    """Find all entries in the master file with a specific debater id."""
+    with open('tournament_records.txt') as json_file:
+        tournament_records = json.load(json_file)
+        entry_list = tournament_records['entry']
+        return_list = []
+
+        for entry in entry_list:
+            if debater_id == entry['id_debater']:
+                return_list.append(entry)
+
+        if not return_list:
+            raise ValueError
+
+        return return_list
 
 
 def update_debater_data(id_debater: int, name: str) -> None:
@@ -91,8 +108,10 @@ def calculate_points(tier: int, team_place: int, speaker_place: int, size_teams:
     print("Team points:" + team_points)
     return speaker_points + team_points
 
+
 def get_top_five():
     """"""
+
 
 def get_top_three_debate(tournaments: list):
     """Get the top three highest point earning tournaments a debater spoke at."""
@@ -101,6 +120,6 @@ def get_top_three_debate(tournaments: list):
 def find_debater(id_debater: int, name: str) -> json:
     """Input the name and id of a debater and output their information."""
 
+
 def tournament_bid(teams: List[Tuple], limit: int) -> str:
     """Given a list of tuples with team debater IDs, return the teams that auto-qualify."""
-

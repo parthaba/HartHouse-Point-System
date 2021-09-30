@@ -9,7 +9,8 @@ class Debater:
     Instance Attributes:
     - debater_id: the id of the debater
     - name: the name of the debater
-    - rel_points: Total amount of RELEVANT points (over the past 4 semesters/including any multipliers)
+    - rel_points: Total amount of RELEVANT points (over the past 4 semesters/including any multipliers/
+                    service points included/only top 5 tournaments etc.)
     - tour_attended: A dictionary of all tournaments attended along with the points accumulated at each tournament
     
     Methods:
@@ -34,16 +35,27 @@ class Debater:
         self.rel_points = 0
         self.tour_attended = {}
 
-        # Populating the tour_attended dictionary
+        # Creating a list of all tournaments debated at
         entry_list = extract.find_entry_debater_id(self.debater_id)
 
+        # Populating self.tour_attended
         # Cycle through every entry and assign every key as "tournament date" and the value as points
         for entry in entry_list:
             tournament = entry['tournament']
+            service = entry['service']
+            judging = entry['judging']
             date = entry['semester']
             points = entry['points']
 
-            self.tour_attended[tournament + ' ' + date] = points
+            # Determining whether the tournament was judge, service or debater
+            if judging:
+                self.tour_attended[tournament + ' ' + date + ' (Judging)'] = points
+
+            elif service:
+                self.tour_attended['Service ' + date] = points
+
+            else:
+                self.tour_attended[tournament + ' ' + date] = points
 
     def __str__(self) -> str:
         """
@@ -63,7 +75,7 @@ class Debater:
                 'id: ' + str(self.debater_id) + '\n' +
                 'Tournaments attended: \n' +
                 self.return_tournaments()
-                )
+        )
 
     def return_tournaments(self) -> str:
         """ Return all tournaments attended """

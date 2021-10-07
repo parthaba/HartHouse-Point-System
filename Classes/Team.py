@@ -1,4 +1,4 @@
-from typing import List, Dict, Tuple
+from typing import List
 from Classes.Debater import Debater
 
 
@@ -20,7 +20,7 @@ class Team:
         - combined points >= 0
     """
     debater_ids: List[int]
-    debater_names: List[int]
+    debater_names: List[str]
     team_name: str
     working_point_total: float
 

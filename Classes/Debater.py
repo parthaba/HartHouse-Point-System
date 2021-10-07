@@ -1,5 +1,4 @@
-from typing import List
-import extract
+from Classes import Extract
 
 
 class Debater:
@@ -9,7 +8,7 @@ class Debater:
     Instance Attributes:
     - debater_id: the id of the debater
     - name: the name of the debater
-    - rel_points: Total amount of RELEVANT points (over the past 4 semesters/including any multipliers/
+    - working_points: Total amount of RELEVANT points (over the past 4 semesters/including any multipliers/
                     service points included/only top 5 tournaments etc.)
     - tour_attended: A dictionary of all tournaments attended along with the points accumulated at each tournament
     
@@ -19,24 +18,25 @@ class Debater:
 
     Representation Invariants:
     - debater_id must be a positive integer
-    - rel_points must be a positive integer
+    - working_points must be a positive integer
     """
 
     debater_id: int
-    rel_points: int
+    working_points: int
     tour_attended: dict
     name: str
 
-    def __init__(self, name: str, debater_id: int) -> None:
+    def __init__(self, debater_id: int) -> None:
         """ Initialize a debater """
 
-        self.name = name
+        # TODO: Create a file that matches debater id to debater name. use this in the constructor
+        self.name = ""
         self.debater_id = debater_id
-        self.rel_points = 0
+        self.working_points = 0
         self.tour_attended = {}
 
         # Creating a list of all tournaments debated at
-        entry_list = extract.find_entry_debater_id(self.debater_id)
+        entry_list = Extract.find_entry_debater_id(self.debater_id)
 
         # Populating self.tour_attended
         # Cycle through every entry and assign every key as "tournament date" and the value as points

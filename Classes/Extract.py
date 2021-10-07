@@ -154,3 +154,4 @@ def tournament_bid(teams: List[Tuple], limit: int) -> str:
     """Given a list of tuples with team debater IDs, return the teams that auto-qualify."""
 
 def top_four_semester():
+    """"""

@@ -1,0 +1,17 @@
+Class: Semester
+
+Responsibility:
+- stores stuff
+    - value representing which semester (dateTime)
+    - tournaments done in that semester (stored in JSON object)
+    - point earning tournaments (stored in JSON object)
+    - total points earned in semester
+
+- does stuff
+    - sort top five
+    - calculates total point earned in semester
+    - getter methods
+
+Collaborators:
+Debater
+Extract

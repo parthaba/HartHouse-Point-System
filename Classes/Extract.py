@@ -2,15 +2,15 @@ import json
 from typing import List, Tuple
 
 
-def add_entry(id: int, id_debater: int, name: str, service: bool, judging: bool, tournament: str, semester: str,
-              points: int) -> None:
+def add_entry(semester_logged: str, id: int, id_debater: int, name: str, service: bool, judging: bool,
+              tournament: str, semester: str, points: int) -> None:
     """Add a tournament data entry to JSON file.
     Representation Invariants:
     - semesters MUST be recorded as "Semester Year" ie. Fall 2021 or Winter 2053
     >>> add_entry('Gautier', 'HHIV', 'Fall 2020')
     """
 
-    with open('tournament_records.txt') as json_file:
+    with open(semester_logged) as json_file:
         tournament_records = json.load(json_file)
         tournament_records['entry'].append(
             {

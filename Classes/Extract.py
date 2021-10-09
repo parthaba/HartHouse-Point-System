@@ -2,7 +2,8 @@ import json
 from typing import List, Tuple
 
 
-def add_entry(id: int, id_debater: int, name: str, service: bool, judging: bool, tournament: str, semester: str, points: int) -> str:
+def add_entry(id: int, id_debater: int, name: str, service: bool, judging: bool, tournament: str, semester: str,
+              points: int) -> None:
     """Add a tournament data entry to JSON file.
     Representation Invariants:
     - semesters MUST be recorded as "Semester Year" ie. Fall 2021 or Winter 2053
@@ -25,10 +26,9 @@ def add_entry(id: int, id_debater: int, name: str, service: bool, judging: bool,
 
     print(json.dumps(tournament_records, indent=4))
 
-    update_debater_data(id_debater, name)
 
-
-def delete_entry(id: int, id_debater: int, name: str, service: bool, judging: bool, tournament: str, semester: str, points: int):
+def delete_entry(id: int, id_debater: int, name: str, service: bool, judging: bool, tournament: str, semester: str,
+                 points: int):
     """Delete a tournament data entry from JSON file."""
 
     with open('tournament_records.txt') as json_file:
@@ -49,8 +49,6 @@ def delete_entry(id: int, id_debater: int, name: str, service: bool, judging: bo
             })
 
     print(json.dumps(tournament_records, indent=4))
-
-    update_debater_data(id_debater, name)
 
 
 def find_entry_id(id: int) -> dict:
@@ -80,10 +78,6 @@ def find_entry_debater_id(debater_id: int) -> List[dict]:
         return return_list
 
 
-def update_debater_data(id_debater: int, name: str) -> None:
-    """Update the data of a debater with a recent tournament entry."""
-
-
 def calculate_points(tier: int, team_place: int, speaker_place: int, size_teams: int) -> int:
     """Calculate the number of competitive points earned from a tournament."""
     if tier == 1:
@@ -107,8 +101,8 @@ def calculate_points(tier: int, team_place: int, speaker_place: int, size_teams:
     if team_points < 0:
         team_points = 0
 
-    print("Speaker points:" + speaker_points)
-    print("Team points:" + team_points)
+    print("Speaker points:" + str(speaker_points))
+    print("Team points:" + str(team_points))
     return speaker_points + team_points
 
 
@@ -116,8 +110,8 @@ def get_top_five(semester: str, debater_id: int) -> int:
     """ Return the total points from a debaters top 5 tournaments attended that semester
     Note this only includes at max 3 competitive tournaments.
     """
-    tourn_counter = 0       # Keeps count of total tournaments up to 5
-    comp_tourn = 0          # Keeps count of total competitive tournaments up to 3
+    tourn_counter = 0  # Keeps count of total tournaments up to 5
+    comp_tourn = 0  # Keeps count of total competitive tournaments up to 3
     points = 0
 
     entry_list = find_entry_debater_id(debater_id)
@@ -125,7 +119,7 @@ def get_top_five(semester: str, debater_id: int) -> int:
 
     # Creating the filtered list one tournament at a time
     for entry in entry_list:
-        if entry['semester'] == semester and entry['service'] == False:
+        if (entry['semester'] == semester) and (entry['service'] is False):
             filtered_list.append(entry)
 
     # Organizing the filtered list
@@ -150,8 +144,6 @@ def get_top_five(semester: str, debater_id: int) -> int:
 
     return points
 
-def tournament_bid(teams: List[Tuple], limit: int) -> str:
-    """Given a list of tuples with team debater IDs, return the teams that auto-qualify."""
 
 def top_four_semester():
     """"""

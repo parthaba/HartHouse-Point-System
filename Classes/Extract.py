@@ -7,7 +7,6 @@ def add_entry(semester_logged: str, id: int, id_debater: int, name: str, service
     """Add a tournament data entry to JSON file.
     Representation Invariants:
     - semesters MUST be recorded as "Semester Year" ie. Fall 2021 or Winter 2053
-    >>> add_entry('Gautier', 'HHIV', 'Fall 2020')
     """
 
     with open(semester_logged) as json_file:

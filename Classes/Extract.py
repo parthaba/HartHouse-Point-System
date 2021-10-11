@@ -77,34 +77,6 @@ def find_entry_debater_id(debater_id: int) -> List[dict]:
         return return_list
 
 
-def calculate_points(tier: int, team_place: int, speaker_place: int, size_teams: int) -> int:
-    """Calculate the number of competitive points earned from a tournament."""
-    if tier == 1:
-        max_points_team = 50
-        max_points_speaker = 40
-    elif tier == 2:
-        max_points_team = 30
-        max_points_speaker = 24
-    elif tier == 3:
-        max_points_team = 20
-        max_points_speaker = 16
-    else:
-        max_points_team = 10
-        max_points_speaker = 8
-
-    speaker_points = max_points_speaker - (max_points_speaker * (speaker_place - 1)) / size_teams
-    if speaker_points < 0:
-        speaker_points = 0
-
-    team_points = max_points_team - (max_points_team * 2 * (team_place - 1)) / size_teams
-    if team_points < 0:
-        team_points = 0
-
-    print("Speaker points:" + str(speaker_points))
-    print("Team points:" + str(team_points))
-    return speaker_points + team_points
-
-
 def get_top_five(semester: str, debater_id: int) -> int:
     """
     Return the total points from a debaters top 5 tournaments attended that semester
@@ -222,4 +194,4 @@ def calculate_service_points(debater_id: int) -> int:
 
 
 def calculate_comp_points(debater_id: int) -> int:
-
+    ...

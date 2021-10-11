@@ -1,0 +1,11 @@
+misc.
+- service points only last for two semesters and also are in effect immediately
+- create a separate entry_file for each semester
+- system will obliterate entry_files from older than 8 semesters ago
+- implement semester class
+- official term for relevant competitive points + relevant service points is working points
+- might wanna refractor my code to make team_names and team_ids a set instead of a tuple
+
+
+to_do
+- create a file that matches debater ids to debater names, use this file when creating Debater objects

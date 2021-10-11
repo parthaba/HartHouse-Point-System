@@ -1,6 +1,12 @@
 Class: Qualifier (Subclass: Tryout, Non-Tryout)
 
 Responsibility:
+- store stuff
+    - list of teams (Team object)
+    - number of teams
+    - number of spots available for given tournament
+    -
+- do stuff
 Compile teams and their respective point total
 Rank top x teams by points
 Use wins to calculate point total

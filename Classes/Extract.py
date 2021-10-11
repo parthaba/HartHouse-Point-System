@@ -2,15 +2,14 @@ import json
 from typing import List, Tuple
 
 
-def add_entry(id: int, id_debater: int, name: str, service: bool, judging: bool, tournament: str, semester: str,
-              points: int) -> str:
+def add_entry(semester_logged: str, id: int, id_debater: int, name: str, service: bool, judging: bool,
+              tournament: str, semester: str, points: int) -> None:
     """Add a tournament data entry to JSON file.
     Representation Invariants:
     - semesters MUST be recorded as "Semester Year" ie. Fall 2021 or Winter 2053
-    >>> add_entry('Gautier', 'HHIV', 'Fall 2020')
     """
 
-    with open('tournament_records.txt') as json_file:
+    with open(semester_logged) as json_file:
         tournament_records = json.load(json_file)
         tournament_records['entry'].append(
             {
@@ -25,8 +24,6 @@ def add_entry(id: int, id_debater: int, name: str, service: bool, judging: bool,
             })
 
     print(json.dumps(tournament_records, indent=4))
-
-    update_debater_data(id_debater, name)
 
 
 def delete_entry(id: int, id_debater: int, name: str, service: bool, judging: bool, tournament: str, semester: str,
@@ -51,8 +48,6 @@ def delete_entry(id: int, id_debater: int, name: str, service: bool, judging: bo
             })
 
     print(json.dumps(tournament_records, indent=4))
-
-    update_debater_data(id_debater, name)
 
 
 def find_entry_id(id: int) -> dict:
@@ -82,11 +77,7 @@ def find_entry_debater_id(debater_id: int) -> List[dict]:
         return return_list
 
 
-def update_debater_data(id_debater: int, name: str) -> None:
-    """Update the data of a debater with a recent tournament entry."""
-
-
-def calculate_tournament_points(tier: int, team_place: int, speaker_place: int, size_teams: int) -> int:
+def calculate_points(tier: int, team_place: int, speaker_place: int, size_teams: int) -> int:
     """Calculate the number of competitive points earned from a tournament."""
     if tier == 1:
         max_points_team = 50
@@ -128,7 +119,7 @@ def get_top_five(semester: str, debater_id: int) -> int:
 
     # Creating the filtered list one tournament at a time
     for entry in entry_list:
-        if entry['semester'] == semester and entry['service'] == False:
+        if (entry['semester'] == semester) and (entry['service'] is False):
             filtered_list.append(entry)
 
     # Organizing the filtered list
@@ -236,4 +227,4 @@ def calculate_service_points(debater_id: int) -> int:
 
 
 def calculate_comp_points(debater_id: int) -> int:
-    
+

@@ -1,0 +1,8 @@
+Class: TeamMaker
+
+Responsibilities:
+- given a list of tuples of debater ids, create a list of Team objects
+
+Collaborators:
+- Team
+- Qualifier

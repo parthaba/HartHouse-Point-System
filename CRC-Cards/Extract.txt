@@ -1,4 +1,4 @@
-Class: Extract
+Package: Extract
 
 Responsibility:
 Extract data from entry_file.json
@@ -14,6 +14,9 @@ Extract data from debater_file
 - Points earned for each tournament
 - Points earned for each semester
 - Top earners (and how many points each)
+
+Methods
+- TODO: write down what each of the methods do
 
 
 Collaborators:

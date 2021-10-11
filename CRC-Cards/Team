@@ -1,0 +1,15 @@
+Class: Teams
+
+Responsibilities:
+- store stuff
+    - team_ids
+    - team_names
+    - team_name (last names of each debater)
+    - total_points
+- do stuff
+    - calculate total working points (combined from the two debaters)
+
+Collaborators:
+- Debater
+- Qualifier
+- TeamMaker

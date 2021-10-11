@@ -1,12 +1,18 @@
 Class: Debater
 
 Responsibility:
-- Total relevant points (4 semesters and which ones if requested)
-- Tournaments attended
-- Points earned for each tournament
-- Points earned for each semester
-- Top earners (and how many points each)
-- return ID
+- stores stuff (attributes)
+    - debater ID
+    - total working points
+    - all point earning semester within past 8 semesters (semester object)
+    - relevant point earning semesters (semester object)
+    - service points
+    - keep track of the current semester
+- does stuff (methods)
+    - figure out which semesters are relevant point earners
+    - getter methods
+    - update service points
+    - when 8 semesters reached, delete oldest
 
 Collaborator:
 Qualifiers

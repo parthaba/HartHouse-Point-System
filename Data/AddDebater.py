@@ -56,5 +56,6 @@ class AddDebater:
 
         print(debater_name + ": " + str(debater_id) + " has been successfully added!")
 
+
 new_debater = AddDebater()
 new_debater.add_debater_id()

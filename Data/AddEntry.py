@@ -4,18 +4,38 @@ from datetime import datetime
 
 class AddEntry:
     """Add an entry into one of the semester files."""
-    FALL_2020 = "Fall 2020.txt"
-    WINTER_2021 = "Winter 2021.txt"
+    FALL_2019 = "Debaters/Fall 2019.txt"
+    WINTER_2020 = "Debaters/Winter 2020.txt"
+    FALL_2020 = "Debaters/Fall 2020.txt"
+    WINTER_2021 = "Debaters/Winter 2021.txt.txt"
+    SEMESTER_DICT = {"Fall 2019": FALL_2019,
+                     "Winter 2020": WINTER_2021,
+                     "Fall 2020": FALL_2020,
+                     "Winter 2021.txt": WINTER_2021}
+
+    entry_id: int
+    debater_id: int
+    debater_name: str
+    semester_file: str
+    semester: str
+
+    def __init__(self):
+        """Initialize an AddEntry object."""
+        debater_id = int(input("Enter the debater ID: "))
+        semester = input("Enter the semester (e.x Fall 2018): ")
+
+        self.entry_id = self.create_unique_entry_id()
+        self.debater_id = debater_id
+        self.debater_name = self.match_id_to_name(debater_id)
+        self.semester = semester
+        self.semester_file = self.SEMESTER_DICT[semester]
+
+    def match_id_to_name(self, debater_id: int) -> str:
+        """Given a debater_id, return the matching name. If no such name exists, raise a ValueError."""
+        # TODO: implement this method
 
     def add_debater_entry(self) -> None:
-        """"""
-        entry_id = self.create_unique_entry_id()
-
-        debater_id = debater_id = int(input("Enter debater id: "))
-
-        # TODO: use csv reader to match debater_id to debater_name
-        debater_name = ...
-
+        """Add points to a debater."""
 
         continue_adding = True
         while continue_adding == True:
@@ -43,55 +63,66 @@ class AddEntry:
                 raise ValueError
 
     def add_service_points(self) -> None:
-        """"""
+        """Adds service points to a member of the club."""
+        points = int(input("Enter the amount of service points earned as an integer."))
+
+        # For service points, the tournament attribute is left as an empty string.
+        add_entry(self.semester_file,
+                  self.entry_id,
+                  self.debater_id,
+                  self.debater_name,
+                  service=True,
+                  judging=False,
+                  tournament='',
+                  semester=self.semester,
+                  points=points)
 
     def add_tournament_points(self) -> None:
         """Depending on whether the debater judged or competed, add the appropriate points."""
 
-    def tournament_judging(self) -> None:
+        tournament_name = input("Enter the tournament name: ")
+
+        judging = input("Did this person judge? Enter <y> if yes, enter <n> if no.")
+        if judging == 'y' or judging == "Y" or judging == '<y>':
+
+            # Judging
+            points = self.tournament_judging()
+
+            add_entry(self.semester_file,
+                      self.entry_id,
+                      self.debater_id,
+                      self.debater_name,
+                      False,
+                      True,
+                      tournament_name,
+                      self.semester,
+                      points)
+
+
+        elif judging == 'n' or judging == "N" or judging == '<n>':
+
+            # Debating
+            points = self.tournament_debating()
+
+            add_entry(self.semester_file,
+                      self.entry_id,
+                      self.debater_id,
+                      self.debater_name,
+                      False,
+                      False,
+                      tournament_name,
+                      self.semester,
+                      points)
+        else:
+            raise ValueError
+
+    def tournament_judging(self) -> int:
         """Calculate points earned from judging."""
 
-    def tournament_debating(self) -> None:
+    def tournament_debating(self) -> int:
         """Calculate points earned from debating."""
 
     def create_unique_entry_id(self) -> int:
         """Generate a valid (unique 6 digit long) ID for a new data entry."""
 
-    if __name__ == "__main__":
-        id = int(input("Enter entry id: "))
 
-        debater_id = int(input("Enter debater id: "))
-
-        name = input("Enter debater name: ")
-
-        service = input("Are these service points? Enter <y> if yes, enter <n> if no.")
-        if service == 'y' or service == "Y" or service == '<y>':
-            service = True
-        elif service == 'n' or service == "N" or service == '<n>':
-            service = False
-        else:
-            raise ValueError
-
-        judging = input("Did this person judge? Enter <y> if yes, enter <n> if no.")
-        if judging == 'y' or service == "Y" or service == '<y>':
-            judging = True
-        elif judging == 'n' or service == "N" or service == '<n>':
-            judging = False
-        else:
-            raise ValueError
-
-        tournament = input("Enter the name of the tournament: ")
-
-        semester = input("Enter the semester that this entry is being logged for: ")
-
-        points = 10
-
-        add_entry(FALL_2020,
-                  id,
-                  debater_id,
-                  name,
-                  service,
-                  judging,
-                  tournament,
-                  semester,
-                  points)

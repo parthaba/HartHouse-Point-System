@@ -2,7 +2,7 @@ import random
 import csv
 
 # csv file name
-filename = "id_list.csv"
+filename = "Debaters/id_list.csv"
 
 # field names
 fields = ['Name', 'ID']

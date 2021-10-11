@@ -6,7 +6,7 @@ class AddDebater:
     """Add a new debater and ID pairing to the id_list."""
 
     # name of the csv file
-    FILENAME = "id_list.csv"
+    FILENAME = "Debaters/id_list.csv"
 
     def __init__(self):
         """Create new AddDebater object."""

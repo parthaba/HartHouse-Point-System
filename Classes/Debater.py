@@ -86,3 +86,79 @@ class Debater:
 
         return return_str
 
+    def last_four_semester(self, debater_id: int) -> List[str]:
+        """
+        Return the last 4 semesters a debater has debated in.
+        """
+
+        entry_list = self.find_entry_debater_id(debater_id)
+        highest_date = []
+
+        # Populating the list of highest dates. The way it works is "Winter 2020" becomes 2020.5 and
+        # "Fall 2030" becomes 2030. Ie. Winter semesters get an additional .5 added onto the year
+        for entry in entry_list:
+            if entry['date'][0] == 'W':
+                year = int(entry['date'][7:11]) + 0.5
+            else:
+                year = int(entry['date'][5:9])
+            highest_date.append(year)
+
+        # Determine the highest semester this debater has debated in
+        max_date = max(highest_date)
+
+        # If this debater's last semester was Fall:
+        if max_date % 1 == 0:
+            max_date_str = "Fall " + str(int(max_date))
+            one_sem_before = "Winter " + str(int(max_date - 1))
+            two_sem_before = "Fall " + str(int(max_date - 1))
+            three_sem_before = "Winter " + str(int(max_date - 2))
+
+        # If this debater's last semester was Winter
+        else:
+            max_date_str = "Winter " + str(int(max_date))
+            one_sem_before = "Fall " + str(int(max_date))
+            two_sem_before = "Winter " + str(int(max_date - 1))
+            three_sem_before = "Fall " + str(int(max_date - 1))
+
+        # return a list of the last 4 semesters in string format
+        return [max_date_str, one_sem_before, two_sem_before, three_sem_before]
+
+    def get_top_five(semester: str, debater_id: int) -> int:
+        """
+        Return the total points from a debaters top 5 tournaments attended that semester
+        Note this only includes at max 3 competitive tournaments.
+        """
+
+        tourn_counter = 0  # Keeps count of total tournaments up to 5
+        comp_tourn = 0  # Keeps count of total competitive tournaments up to 3
+        points = 0
+
+        entry_list = find_entry_debater_id(debater_id)
+        filtered_list = []
+
+        # Creating the filtered list one tournament at a time
+        for entry in entry_list:
+            if (entry['semester'] == semester) and (entry['service'] is False):
+                filtered_list.append(entry)
+
+        # Organizing the filtered list
+        # This will sort the list by points in descending order
+        filtered_list.sort(key=lambda x: x.get('points'), reverse=True)
+
+        for entry in filtered_list:
+
+            # Check if the tournament was judging or competitive; add points accordingly
+            if entry["judging"]:
+                tourn_counter += 1
+                points += entry['points']
+
+            elif comp_tourn < 3:
+                tourn_counter += 1
+                comp_tourn += 1
+                points += entry['points']
+
+            # Can only have 5 tournaments max
+            if tourn_counter == 5:
+                break
+
+        return points

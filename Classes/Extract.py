@@ -154,11 +154,6 @@ def last_four_semester(debater_id: int) -> List[str]:
     Return the alst 4 semesters a debater has debated in.
     """
 
-    # TODO: Answer these questions
-    # What about ongoing semesters?
-    # What if they skip a year and come back?
-    # If they don't want a semester included?
-
     entry_list = find_entry_debater_id(debater_id)
     highest_date = []
 

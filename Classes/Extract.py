@@ -8,23 +8,29 @@ def add_entry(semester_logged: str, id: int, id_debater: int, name: str, service
     Representation Invariants:
     - semesters MUST be recorded as "Semester Year" ie. Fall 2021 or Winter 2053
     """
+    filename = semester_logged
+    entry = {'id': id,
+             'id_debater': id_debater,
+             'name': name,
+             'service': service,
+             'service_position': service_position,
+             'judging': judging,
+             'tournament': tournament,
+             'semester': semester,
+             'points': points
+             }
 
-    with open(semester_logged) as json_file:
-        tournament_records = json.load(json_file)
-        tournament_records['entry'].append(
-            {
-                'id': id,
-                'id_debater': id_debater,
-                'name': name,
-                'service': service,
-                'service_position': service_position,
-                'judging': judging,
-                'tournament': tournament,
-                'semester': semester,
-                'points': points
-            })
+    with open(filename, 'r') as file:
+        data = json.load(file)['entry']
 
-    print(json.dumps(tournament_records, indent=4))
+    data.append(entry)
+
+    new_data = {'entry': data}
+
+    with open(filename, 'w') as file:
+        json.dump(new_data, file)
+
+    print("Successfully added!")
 
 
 def delete_entry(id: int, id_debater: int, name: str, service: bool, service_position: bool, judging: bool, tournament: str, semester: str,

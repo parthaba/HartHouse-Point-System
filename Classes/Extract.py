@@ -71,35 +71,6 @@ def find_entry_id(debater_id: int) -> dict:
         raise ValueError
 
 
-
-def calculate_points(tier: int, team_place: int, speaker_place: int, size_teams: int) -> int:
-    """Calculate the number of competitive points earned from a tournament."""
-    if tier == 1:
-        max_points_team = 50
-        max_points_speaker = 40
-    elif tier == 2:
-        max_points_team = 30
-        max_points_speaker = 24
-    elif tier == 3:
-        max_points_team = 20
-        max_points_speaker = 16
-    else:
-        max_points_team = 10
-        max_points_speaker = 8
-
-    speaker_points = max_points_speaker - (max_points_speaker * (speaker_place - 1)) / size_teams
-    if speaker_points < 0:
-        speaker_points = 0
-
-    team_points = max_points_team - (max_points_team * 2 * (team_place - 1)) / size_teams
-    if team_points < 0:
-        team_points = 0
-
-    print("Speaker points:" + str(speaker_points))
-    print("Team points:" + str(team_points))
-    return speaker_points + team_points
-
-
 def tournament_bid(teams: List[Tuple], limit: int) -> str:
     """Given a list of tuples with team debater IDs, return the teams that auto-qualify."""
 

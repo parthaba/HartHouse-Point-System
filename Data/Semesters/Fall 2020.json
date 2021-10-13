@@ -1,1 +1,103 @@
-{"entry": [{"entry_id": 320556, "id_debater": 243512, "name": "Adam Banihani", "service": false, "service_position": false, "judging": false, "tournament": "Western IV", "semester": "Fall 2020", "points": 20.864864864864863}, {"entry_id": 442376, "id_debater": 243512, "name": "Adam Banihani", "service": false, "service_position": false, "judging": true, "tournament": "Hart House IV", "semester": "Fall 2020", "points": 9}, {"entry_id": 84024, "id_debater": 243512, "name": "Adam Banihani", "service": false, "service_position": false, "judging": true, "tournament": "BP Champs", "semester": "Fall 2020", "points": 6}]}
+{
+    "entry": [
+        {
+            "entry_id": 320556,
+            "id_debater": 243512,
+            "name": "Adam Banihani",
+            "service": false,
+            "service_position": false,
+            "judging": false,
+            "tournament": "Western IV",
+            "semester": "Fall 2020",
+            "points": 20.864864864864863
+        },
+        {
+            "entry_id": 442376,
+            "id_debater": 243512,
+            "name": "Adam Banihani",
+            "service": false,
+            "service_position": false,
+            "judging": true,
+            "tournament": "Hart House IV",
+            "semester": "Fall 2020",
+            "points": 9
+        },
+        {
+            "entry_id": 84024,
+            "id_debater": 243512,
+            "name": "Adam Banihani",
+            "service": false,
+            "service_position": false,
+            "judging": true,
+            "tournament": "BP Champs",
+            "semester": "Fall 2020",
+            "points": 6
+        },
+        {
+            "entry_id": 150772,
+            "id_debater": 463871,
+            "name": "Arpi Yang",
+            "service": false,
+            "service_position": false,
+            "judging": false,
+            "tournament": "Doxbridge 3",
+            "semester": "Fall 2020",
+            "points": 47.20754716981132
+        },
+        {
+            "entry_id": 335361,
+            "id_debater": 463871,
+            "name": "Arpi Yang",
+            "service": false,
+            "service_position": false,
+            "judging": false,
+            "tournament": "Western IV",
+            "semester": "Fall 2020",
+            "points": 30.16216216216216
+        },
+        {
+            "entry_id": 983333,
+            "id_debater": 463871,
+            "name": "Arpi Yang",
+            "service": false,
+            "service_position": false,
+            "judging": false,
+            "tournament": "Chancellors Cup",
+            "semester": "Fall 2020",
+            "points": 24.22222222222222
+        },
+        {
+            "entry_id": 439960,
+            "id_debater": 243512,
+            "name": "Adam Banihani",
+            "service": false,
+            "service_position": false,
+            "judging": false,
+            "tournament": "Chancellors Cup",
+            "semester": "Fall 2020",
+            "points": 3.333333333333332
+        },
+        {
+            "entry_id": 507019,
+            "id_debater": 463871,
+            "name": "Arpi Yang",
+            "service": false,
+            "service_position": false,
+            "judging": true,
+            "tournament": "Hart House IV",
+            "semester": "Fall 2020",
+            "points": 9
+        },
+        {
+            "entry_id": 241827,
+            "id_debater": 463871,
+            "name": "Arpi Yang",
+            "service": true,
+            "service_position": false,
+            "judging": false,
+            "tournament": "",
+            "semester": "Fall 2020",
+            "points": 13
+        }
+    ]
+}

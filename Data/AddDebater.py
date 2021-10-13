@@ -14,7 +14,7 @@ class AddDebater:
     def create_valid_id(self) -> int:
         """Create a valid (unique 6 digit long) ID for a new debater"""
 
-        id_list = list(range(0, 1000000))
+        id_list = list(range(100000, 1000000))
 
         with open(self.FILENAME, 'r') as csvfile:
             # creating a csv writer object
@@ -35,7 +35,7 @@ class AddDebater:
                     used_id_list.append(row[1])
 
         valid_id_list = [user_id for user_id in id_list
-                         if user_id not in used_id_list]
+                         if str(user_id) not in used_id_list]
 
         return random.choice(valid_id_list)
 

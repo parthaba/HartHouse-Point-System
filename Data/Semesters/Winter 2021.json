@@ -1,1 +1,114 @@
-{"entry":  []}
+{
+    "entry": [
+        {
+            "entry_id": 953063,
+            "id_debater": 463871,
+            "name": "Arpi Yang",
+            "service": false,
+            "service_position": false,
+            "judging": false,
+            "tournament": "Doxbridge Worlds",
+            "semester": "Winter 2021",
+            "points": 39.0
+        },
+        {
+            "entry_id": 826272,
+            "id_debater": 463871,
+            "name": "Arpi Yang",
+            "service": false,
+            "service_position": false,
+            "judging": false,
+            "tournament": "Sabanci Open",
+            "semester": "Winter 2021",
+            "points": 31.0
+        },
+        {
+            "entry_id": 637676,
+            "id_debater": 463871,
+            "name": "Arpi Yang",
+            "service": false,
+            "service_position": false,
+            "judging": false,
+            "tournament": "Princeton IV",
+            "semester": "Winter 2021",
+            "points": 31.97142857142857
+        },
+        {
+            "entry_id": 489106,
+            "id_debater": 463871,
+            "name": "Arpi Yang",
+            "service": false,
+            "service_position": false,
+            "judging": true,
+            "tournament": "Manchester IV",
+            "semester": "Winter 2021",
+            "points": 9
+        },
+        {
+            "entry_id": 998442,
+            "id_debater": 357944,
+            "name": "Serena Yuan",
+            "service": false,
+            "service_position": false,
+            "judging": false,
+            "tournament": "Princeton IV",
+            "semester": "Winter 2021",
+            "points": 34.885714285714286
+        },
+        {
+            "entry_id": 452288,
+            "id_debater": 357944,
+            "name": "Serena Yuan",
+            "service": false,
+            "service_position": false,
+            "judging": false,
+            "tournament": "Sabanci",
+            "semester": "Winter 2021",
+            "points": 27.8
+        },
+        {
+            "entry_id": 937286,
+            "id_debater": 357944,
+            "name": "Serena Yuan",
+            "service": false,
+            "service_position": false,
+            "judging": false,
+            "tournament": "Korea WUDC 2021",
+            "semester": "Winter 2021",
+            "points": 33.94594594594595
+        },
+        {
+            "entry_id": 754489,
+            "id_debater": 357944,
+            "name": "Serena Yuan",
+            "service": true,
+            "service_position": true,
+            "judging": false,
+            "tournament": "",
+            "semester": "Winter 2021",
+            "points": 24
+        },
+        {
+            "entry_id": 382253,
+            "id_debater": 463871,
+            "name": "Arpi Yang",
+            "service": true,
+            "service_position": true,
+            "judging": false,
+            "tournament": "",
+            "semester": "Winter 2020",
+            "points": 12
+        },
+        {
+            "entry_id": 956783,
+            "id_debater": 463871,
+            "name": "Arpi Yang",
+            "service": true,
+            "service_position": false,
+            "judging": false,
+            "tournament": "",
+            "semester": "Winter 2021",
+            "points": 5
+        }
+    ]
+}

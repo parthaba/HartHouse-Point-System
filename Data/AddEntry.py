@@ -26,16 +26,31 @@ class AddEntry:
     def __init__(self):
         """Initialize an AddEntry object."""
         debater_id = int(input("Enter the debater ID: "))
-        semester = input("Enter the semester (e.x Fall 2018): ")
 
-        self.entry_id = create_unique_entry_id()
         self.debater_id = debater_id
         self.debater_name = match_id_to_name(debater_id)
+        print("Debater: " + self.debater_name)
+
+        continue_inputting = True
+        while continue_inputting:
+            self.add_entry()
+
+            answer = input("Would you like to add another entry for this member?")
+            if answer in self.NO:
+                continue_inputting = False
+            elif answer in self.YES:
+                continue_inputting = True
+            else:
+                raise ValueError
+
+    def add_entry(self) -> None:
+        """Add points to a debater."""
+
+        self.entry_id = create_unique_entry_id()
+
+        semester = input("Enter the semester (e.x Fall 2018): ")
         self.semester = semester
         self.semester_file = self.SEMESTER_DICT[semester]
-
-    def add_debater_entry(self) -> None:
-        """Add points to a debater."""
 
         service = input("Are these service points? Enter <y> if yes, enter <n> if no.")
         if service == 'y' or service == "Y" or service == '<y>':
@@ -74,16 +89,16 @@ class AddEntry:
         else:
             raise ValueError
 
-        add_entry(self.semester_file,               # Which semester file
-                  self.entry_id,                    # Unique entry ID
-                  self.debater_id,                  # Debater ID
-                  self.debater_name,                # Debater name
-                  True,                             # Whether these are service points
-                  position,                         # If service points, whether from specific position or outreach
-                  False,                            # Judging
-                  '',                               # Name of tournament (if service, empty string)
-                  self.semester,                    # The semester that these points were earned
-                  points)                           # The number of points earned
+        add_entry(self.semester_file,  # Which semester file
+                  self.entry_id,  # Unique entry ID
+                  self.debater_id,  # Debater ID
+                  self.debater_name,  # Debater name
+                  True,  # Whether these are service points
+                  position,  # If service points, whether from specific position or outreach
+                  False,  # Judging
+                  '',  # Name of tournament (if service, empty string)
+                  self.semester,  # The semester that these points were earned
+                  points)  # The number of points earned
 
     def add_tournament_points(self) -> None:
         """Depending on whether the debater judged or competed, add the appropriate points."""
@@ -118,16 +133,16 @@ class AddEntry:
 
         points = calculate_points_judging(tier, break_as_judge)
 
-        add_entry(self.semester_file,                 # Which semester file
-                  self.entry_id,                      # Unique entry ID
-                  self.debater_id,                    # Debater ID
-                  self.debater_name,                  # Debater name
-                  False,                              # Whether these are service points
-                  False,                              # If service points, whether from specific position or outreach
-                  True,                               # Judging
-                  tournament_name,                    # Name of tournament (if service, empty string)
-                  self.semester,                      # The semester that these points were earned
-                  points)                             # The number of points earned
+        add_entry(self.semester_file,  # Which semester file
+                  self.entry_id,  # Unique entry ID
+                  self.debater_id,  # Debater ID
+                  self.debater_name,  # Debater name
+                  False,  # Whether these are service points
+                  False,  # If service points, whether from specific position or outreach
+                  True,  # Judging
+                  tournament_name,  # Name of tournament (if service, empty string)
+                  self.semester,  # The semester that these points were earned
+                  points)  # The number of points earned
 
     def tournament_debating(self, tier: int, tournament_name: str) -> None:
         """Calculate points earned from debating."""
@@ -137,21 +152,21 @@ class AddEntry:
 
         points = calculate_points_debating(tier, tournament_size, team_place, speaker_place)
 
-        add_entry(self.semester_file,                 # Which semester file
-                  self.entry_id,                      # Unique entry ID
-                  self.debater_id,                    # Debater ID
-                  self.debater_name,                  # Debater name
-                  False,                              # Whether these are service points
-                  False,                              # If service points, whether from specific position or outreach
-                  False,                              # Judging
-                  tournament_name,                    # Name of tournament (if service, empty string)
-                  self.semester,                      # The semester that these points were earned
-                  points)                             # The number of points earned
+        add_entry(self.semester_file,  # Which semester file
+                  self.entry_id,  # Unique entry ID
+                  self.debater_id,  # Debater ID
+                  self.debater_name,  # Debater name
+                  False,  # Whether these are service points
+                  False,  # If service points, whether from specific position or outreach
+                  False,  # Judging
+                  tournament_name,  # Name of tournament (if service, empty string)
+                  self.semester,  # The semester that these points were earned
+                  points)  # The number of points earned
 
 
 def create_unique_entry_id() -> int:
     """Generate a valid (unique 6 digit long) ID for a new data entry."""
-    id_list = list(range(0, 1000000))
+    id_list = list(range(100000, 1000000))
     used_id_list = []
     with open("data_entry_ids.csv") as csvfile:
         csv_reader = csv.reader(csvfile)
@@ -165,7 +180,7 @@ def create_unique_entry_id() -> int:
             row_count += 1
 
     valid_id_list = [user_id for user_id in id_list
-                         if user_id not in used_id_list]
+                     if str(user_id) not in used_id_list]
 
     return random.choice(valid_id_list)
 
@@ -174,17 +189,17 @@ def match_id_to_name(debater_id: int) -> str:
     """Given a debater_id, return the matching name. If no such name exists, raise a ValueError."""
     with open("Debaters/id_list.csv", 'r') as csvfile:
         csv_reader = csv.reader(csvfile)
-        row_number = 0
+        row_number = 1
         for row in csv_reader:
-            next(csv_reader)
 
             # filters out empty rows
-            row_number += 1
-            if row_number % 2 == 0:
+            if row_number % 2 == 1:
 
                 # Return the name of the debater with the given debater ID
-                if int(row[1]) == debater_id:
+                if row[1] == str(debater_id):
                     return row[0]
+
+            row_number += 1
 
         raise Exception("Did not find a debater with this ID.")
 
@@ -243,3 +258,7 @@ def calculate_points_judging(tier: int, break_as_judge: bool) -> int:
             return 9
         else:
             return 3
+
+
+# Run the file
+new_debater = AddEntry()

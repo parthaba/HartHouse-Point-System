@@ -28,7 +28,7 @@ def add_entry(semester_logged: str, entry_id: int, id_debater: int, name: str, s
     new_data = {'entry': data}
 
     with open(filename, 'w') as file:
-        json.dump(new_data, file)
+        json.dump(new_data, file, indent=4)
 
     print("Successfully added!")
 

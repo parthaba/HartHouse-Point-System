@@ -2,14 +2,14 @@ import json
 from typing import List, Tuple
 
 
-def add_entry(semester_logged: str, id: int, id_debater: int, name: str, service: bool, service_position: bool,  judging: bool,
+def add_entry(semester_logged: str, entry_id: int, id_debater: int, name: str, service: bool, service_position: bool, judging: bool,
               tournament: str, semester: str, points: int) -> None:
     """Add a tournament data entry to JSON file.
     Representation Invariants:
     - semesters MUST be recorded as "Semester Year" ie. Fall 2021 or Winter 2053
     """
     filename = semester_logged
-    entry = {'id': id,
+    entry = {'entry_id': entry_id,
              'id_debater': id_debater,
              'name': name,
              'service': service,

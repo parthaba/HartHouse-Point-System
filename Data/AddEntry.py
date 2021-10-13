@@ -5,14 +5,14 @@ import csv
 
 class AddEntry:
     """Add an entry into one of the semester files."""
-    FALL_2019 = "Semesters/Fall 2019.txt"
-    WINTER_2020 = "Semesters/Winter 2020.txt"
-    FALL_2020 = "Semesters/Fall 2020.txt"
-    WINTER_2021 = "Semesters/Winter 2021.txt.txt"
+    FALL_2019 = "Semesters/Fall 2019.json"
+    WINTER_2020 = "Semesters/Winter 2020.json"
+    FALL_2020 = "Semesters/Fall 2020.json"
+    WINTER_2021 = "Semesters/Winter 2021.json."
     SEMESTER_DICT = {"Fall 2019": FALL_2019,
                      "Winter 2020": WINTER_2021,
                      "Fall 2020": FALL_2020,
-                     "Winter 2021.txt": WINTER_2021}
+                     "Winter 2021": WINTER_2021}
 
     YES = ['y', 'Y', '<y>', 'yes', 'YES', 'Yes', 'yEs', 'yeS', 'YEs', 'yES', 'YeS']
     NO = ['n', 'N', '<n>', 'no', 'NO', 'No', 'nO']
@@ -37,26 +37,21 @@ class AddEntry:
     def add_debater_entry(self) -> None:
         """Add points to a debater."""
 
-        continue_adding = True
-        while continue_adding:
+        service = input("Are these service points? Enter <y> if yes, enter <n> if no.")
+        if service == 'y' or service == "Y" or service == '<y>':
+            # Adding service points
+            self.add_service_points()
 
-            service = input("Are these service points? Enter <y> if yes, enter <n> if no.")
-            if service == 'y' or service == "Y" or service == '<y>':
-                # Adding service points
-                self.add_service_points()
+        elif service == 'n' or service == "N" or service == '<n>':
+            # Adding tournament points
+            self.add_tournament_points()
+        else:
+            raise ValueError
 
-            elif service == 'n' or service == "N" or service == '<n>':
-                # Adding tournament points
-                self.add_tournament_points()
-            else:
-                raise ValueError
-
-            with open("data_entry_ids.csv", 'a') as csvfile:
-                # creating a csv writer object
-                csv_writer = csv.writer(csvfile)
-
-                # writing the fields
-                csv_writer.writerow([self.entry_id])
+        # Recording the ID used
+        with open("data_entry_ids.csv", 'a') as csvfile:
+            csv_writer = csv.writer(csvfile)
+            csv_writer.writerow([self.entry_id])
 
             # # Give option to add another entry
             # continue_add = input("Would you like to add another data entry for this debater? "
@@ -160,9 +155,14 @@ def create_unique_entry_id() -> int:
     used_id_list = []
     with open("data_entry_ids.csv") as csvfile:
         csv_reader = csv.reader(csvfile)
+        row_count = 1
 
         for row in csv_reader:
-            used_id_list.append(row[0])
+
+            if row_count % 2 == 1:
+                used_id_list.append(row[0])
+
+            row_count += 1
 
     valid_id_list = [user_id for user_id in id_list
                          if user_id not in used_id_list]
@@ -176,15 +176,17 @@ def match_id_to_name(debater_id: int) -> str:
         csv_reader = csv.reader(csvfile)
         row_number = 0
         for row in csv_reader:
-            field = next(csv_reader)
+            next(csv_reader)
 
             # filters out empty rows
             row_number += 1
             if row_number % 2 == 0:
 
                 # Return the name of the debater with the given debater ID
-                if row[1] == debater_id:
+                if int(row[1]) == debater_id:
                     return row[0]
+
+        raise Exception("Did not find a debater with this ID.")
 
 
 def calculate_points_debating(tier: int, size_teams: int, team_place: int, speaker_place: int) -> int:

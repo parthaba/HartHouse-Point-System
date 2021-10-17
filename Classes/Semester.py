@@ -18,7 +18,7 @@ class Semester:
     - service_tournaments: Return all service related events that an individual has attended
     """
 
-    def __init__(self, semester: str, semester_file: str, entry_list: List[dict]):
+    def __init__(self, semester: str, semester_file: str):
         self.semester = semester
         self.semester_file = semester_file
         with open(semester_file) as json_file:
@@ -37,37 +37,6 @@ class Semester:
 
         return return_list
 
-    def calculate_service_points(self, debater_id: int) -> int:
-        """
-        Calculate a debaters total service points.
-        """
-        entry_list = self.find_entry_debater_id(debater_id)
-        four_semesters = self.last_four_semester(debater_id)
-        three_semesters = four_semesters[0:3]
 
-        total_service_points = 0
 
-        filtered_entry_list = []
 
-        for entry in entry_list:
-            if entry['service']:
-                filtered_entry_list.append(entry)
-
-        for semester in three_semesters:
-            service_points = 0
-            for entry in filtered_entry_list:
-                if semester == entry['date']:
-                    service_points += entry['points']
-
-            total_service_points += min(30, service_points)
-
-    def calculate_comp_points(self, debater_id: int) -> int:
-        pass
-
-    def calculate_total_points(self, debater_id: int) -> int:
-        """
-        Calculate a debaters total relevant points
-        """
-
-        return (self.calculate_comp_points(debater_id)
-                + self.calculate_service_points(debater_id))

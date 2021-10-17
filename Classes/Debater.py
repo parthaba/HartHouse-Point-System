@@ -1,4 +1,6 @@
-from Classes import Extract
+from typing import List
+
+from Semester import Semester
 
 
 class Debater:
@@ -36,7 +38,7 @@ class Debater:
         self.tour_attended = {}
 
         # Creating a list of all tournaments debated at
-        entry_list = Extract.find_entry_debater_id(self.debater_id)
+        entry_list = Semester.find_entry_debater_id(self.debater_id)
 
         # Populating self.tour_attended
         # Cycle through every entry and assign every key as "tournament date" and the value as points
@@ -86,54 +88,27 @@ class Debater:
 
         return return_str
 
-    def last_four_semester(self, debater_id: int) -> List[str]:
+    def last_four_semester(self) -> List[str]:
         """
         Return the last 4 semesters a debater has debated in.
         """
 
-        entry_list = self.find_entry_debater_id(debater_id)
-        highest_date = []
 
-        # Populating the list of highest dates. The way it works is "Winter 2020" becomes 2020.5 and
-        # "Fall 2030" becomes 2030. Ie. Winter semesters get an additional .5 added onto the year
-        for entry in entry_list:
-            if entry['date'][0] == 'W':
-                year = int(entry['date'][7:11]) + 0.5
-            else:
-                year = int(entry['date'][5:9])
-            highest_date.append(year)
 
-        # Determine the highest semester this debater has debated in
-        max_date = max(highest_date)
 
-        # If this debater's last semester was Fall:
-        if max_date % 1 == 0:
-            max_date_str = "Fall " + str(int(max_date))
-            one_sem_before = "Winter " + str(int(max_date - 1))
-            two_sem_before = "Fall " + str(int(max_date - 1))
-            three_sem_before = "Winter " + str(int(max_date - 2))
 
-        # If this debater's last semester was Winter
-        else:
-            max_date_str = "Winter " + str(int(max_date))
-            one_sem_before = "Fall " + str(int(max_date))
-            two_sem_before = "Winter " + str(int(max_date - 1))
-            three_sem_before = "Fall " + str(int(max_date - 1))
-
-        # return a list of the last 4 semesters in string format
-        return [max_date_str, one_sem_before, two_sem_before, three_sem_before]
-
-    def get_top_five(semester: str, debater_id: int) -> int:
+    def get_top_five_sem(self, semester: str) -> int:
         """
         Return the total points from a debaters top 5 tournaments attended that semester
         Note this only includes at max 3 competitive tournaments.
         """
-
+        sem_txt = semester + ".json"
+        sem = Semester(semester, sem_txt)
         tourn_counter = 0  # Keeps count of total tournaments up to 5
         comp_tourn = 0  # Keeps count of total competitive tournaments up to 3
         points = 0
 
-        entry_list = find_entry_debater_id(debater_id)
+        entry_list = sem.find_entry_debater_id(self.debater_id)
         filtered_list = []
 
         # Creating the filtered list one tournament at a time
@@ -162,3 +137,42 @@ class Debater:
                 break
 
         return points
+
+    def calculate_service_points_sem(self, semester: str) -> int:
+        """
+        Calculate a debaters service points in one semester
+        """
+        sem_txt = semester + ".json"
+        sem = Semester(semester, sem_txt)
+        entry_list = sem.find_entry_debater_id(self.debater_id)
+
+        filtered_entry_list = []
+
+        # Creating the filtered list one tournament at a time
+        for entry in entry_list:
+            if entry['service']:
+                filtered_entry_list.append(entry)
+
+        service_points = 0
+        for entry in filtered_entry_list:
+            if semester == entry['date']:
+                service_points += entry['points']
+
+        return service_points
+
+    def calculate_service_points(current_sem: str, self):
+        four_semesters = self.last_four_semester()
+        three_semesters = four_semesters[0:3]
+
+
+
+    def calculate_comp_points(self, debater_id: int) -> int:
+        pass
+
+    def calculate_total_points(self, debater_id: int) -> int:
+        """
+        Calculate a debaters total relevant points
+        """
+
+        return (self.calculate_comp_points(debater_id)
+                + self.calculate_service_points(debater_id))

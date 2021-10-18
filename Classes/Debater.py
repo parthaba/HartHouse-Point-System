@@ -66,10 +66,10 @@ class Debater:
             tourn_list = sem.find_entry_debater_id(self.debater_id)
             for tourn in tourn_list:
                 if tourn["service"] == True:
-                    self.tour_attended["Service "+str(service_num)] = tourn["points"]
+                    self.tour_attended[tourn["semester"] + ": Service " + str(service_num)] = tourn["points"]
                     service_num += 1
                 else:
-                    self.tour_attended[tourn["tournament"]] = tourn["points"]
+                    self.tour_attended[tourn["semester"] + ": " + tourn["tournament"]] = tourn["points"]
 
     def __str__(self) -> str:
         """
@@ -87,7 +87,7 @@ class Debater:
         return (
                 'Name: ' + self.name + '\n' +
                 'id: ' + str(self.debater_id) + '\n' +
-                'Tournaments attended: \n' +
+                '--- Tournaments/Events Attended --- \n' +
                 self.return_tournaments()
         )
 
@@ -219,7 +219,7 @@ class Debater:
 
         # Organizing the filtered list
         # This will sort the list by points in descending order
-        filtered_list.sort(key=lambda x: x.get('points'), reverse=True)
+        filtered_list.sort(key=lambda x: x.get('points'), reverse=False)
 
         for entry in filtered_list:
 
@@ -239,7 +239,7 @@ class Debater:
 
         return points
 
-    def calculate_service_points_sem(self, sem: Semester) -> int:
+    def calculate_service_points_sem(self, sem: Semester, last_in_list: bool) -> int:
         """
         Calculate a debaters service points in one semester
         """
@@ -254,24 +254,41 @@ class Debater:
                 filtered_entry_list.append(entry)
 
         service_points = 0
-        for entry in filtered_entry_list:
-            if sem.semester == entry['semester']:
+
+        if not last_in_list:
+            for entry in filtered_entry_list:
                 service_points += entry['points']
+
+        else:
+            for entry in filtered_entry_list:
+                if entry['service_position']:
+                    service_points += entry['points']
+                else:
+                    service_points += .75 * entry['points']
 
         return service_points
 
     def calculate_service_points(self):
-        four_semesters = self.last_four_semesters()
+        curr_num = self._current_semester.num_represent
+        three_sem = self.last_four_semesters()
 
         service_points = 0
 
-        # # Determining if this debater has been on break
-        # if
-        # for sem in four_semesters:
-        #     if self._current_semester == sem:
-        #         service_points += self.calculate_service_points_sem(sem)
-        #
-        #     if self._current_semester.num_represent ==
+        if curr_num == three_sem[0]:
+            service_points += self.calculate_service_points_sem(three_sem[0], False)
+            service_points += self.calculate_service_points_sem(three_sem[1], False)
+            service_points += self.calculate_service_points_sem(three_sem[2], True)
+
+        elif curr_num - 0.5 == three_sem[0] or curr_num - 1 == three_sem[0]:
+            service_points += self.calculate_service_points_sem(three_sem[0], False)
+            service_points += self.calculate_service_points_sem(three_sem[1], True)
+
+        else:
+            for sem in three_sem:
+                if curr_num - 2 <= sem.num_represent:
+                    service_points += self.calculate_service_points_sem(sem, True)
+
+        return max(service_points, 30)
 
     def calculate_comp_points(self) -> int:
         comp_points = 0
@@ -290,10 +307,24 @@ class Debater:
                     comp_points += self.get_top_five_sem(sem)
         return comp_points
 
+    def multiplier(self) -> float:
+        four_sem = self.last_four_semester_minus_current()
+        semesters_debated = 0
+        for sem in four_sem:
+            if sem.find_entry_debater_id(self.debater_id):
+                semesters_debated += 1
+
+        if semesters_debated == 1:
+            return 4
+        elif semesters_debated == 2:
+            return 2
+        elif semesters_debated == 3:
+            return 4 / 3
+
     def calculate_total_points(self) -> int:
         """
         Calculate a debaters total relevant points
         """
 
-        return (self.calculate_comp_points()
-                + self.calculate_service_points())
+        return int((self.multiplier() * self.calculate_comp_points())
+                   + self.calculate_service_points())

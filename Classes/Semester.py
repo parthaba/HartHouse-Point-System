@@ -1,5 +1,6 @@
 import json
 from typing import List
+import os
 
 
 class Semester:
@@ -18,14 +19,26 @@ class Semester:
     - service_tournaments: Return all service related events that an individual has attended
     """
 
-    def __init__(self, semester: str, semester_file: str, entry_list: List[dict]):
+    def __init__(self, semester: str, semester_file: str):
         self.semester = semester
         self.semester_file = semester_file
+
+        if semester[0] == 'W':
+            self.num_represent = int(semester[7:11]) + 0.5
+        else:
+            self.num_represent = int(semester[5:9])
+
+        abs_path = os.getcwd()
+        sem_directory = abs_path + '/../Data/Semesters/'
+        semester_file = sem_directory + semester_file
         with open(semester_file) as json_file:
             semester_records = json.load(json_file)
             entry_list = semester_records['entry']
 
         self.entry_list = entry_list
+
+    def __str__(self):
+        return self.semester
 
     def find_entry_debater_id(self, debater_id: int) -> List[dict]:
         """Find all entries in the master file with a specific debater id."""
@@ -37,37 +50,29 @@ class Semester:
 
         return return_list
 
-    def calculate_service_points(self, debater_id: int) -> int:
-        """
-        Calculate a debaters total service points.
-        """
-        entry_list = self.find_entry_debater_id(debater_id)
-        four_semesters = self.last_four_semester(debater_id)
-        three_semesters = four_semesters[0:3]
+    def __lt__(self, other) -> bool:
+        if isinstance(other, int) or isinstance(other, float):
+            if self.num_represent < other:
+                return True
 
-        total_service_points = 0
+        elif self.num_represent < other.num_represent:
+            return True
+        return False
 
-        filtered_entry_list = []
+    def __gt__(self, other) -> bool:
+        if isinstance(other, int) or isinstance(other, float):
+            if self.num_represent > other:
+                return True
 
-        for entry in entry_list:
-            if entry['service']:
-                filtered_entry_list.append(entry)
+        elif self.num_represent > other.num_represent:
+            return True
+        return False
 
-        for semester in three_semesters:
-            service_points = 0
-            for entry in filtered_entry_list:
-                if semester == entry['date']:
-                    service_points += entry['points']
+    def __eq__(self, other) -> bool:
+        if isinstance(other, int) or isinstance(other, float):
+            if self.num_represent == other:
+                return True
 
-            total_service_points += min(30, service_points)
-
-    def calculate_comp_points(self, debater_id: int) -> int:
-        pass
-
-    def calculate_total_points(self, debater_id: int) -> int:
-        """
-        Calculate a debaters total relevant points
-        """
-
-        return (self.calculate_comp_points(debater_id)
-                + self.calculate_service_points(debater_id))
+        elif self.num_represent == other.num_represent:
+            return True
+        return False

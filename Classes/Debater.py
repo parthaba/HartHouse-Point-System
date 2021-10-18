@@ -1,4 +1,6 @@
-from Classes import Extract
+from typing import List
+import os
+from Semester import Semester
 
 
 class Debater:
@@ -25,37 +27,49 @@ class Debater:
     working_points: int
     tour_attended: dict
     name: str
+    _current_semester: Semester
 
     def __init__(self, debater_id: int) -> None:
         """ Initialize a debater """
 
-        # TODO: Create a file that matches debater id to debater name. use this in the constructor
-        self.name = ""
         self.debater_id = debater_id
         self.working_points = 0
         self.tour_attended = {}
 
-        # Creating a list of all tournaments debated at
-        entry_list = Extract.find_entry_debater_id(self.debater_id)
+        # TODO: Create a file that matches debater id to debater name. use this in the constructor
+        # Allocating name
+        # Go to Debater Directory
+        abs_path = os.getcwd()
+        debater_directory = abs_path + '/../Data/Debaters'
+        self.name = ""
 
-        # Populating self.tour_attended
-        # Cycle through every entry and assign every key as "tournament date" and the value as points
-        for entry in entry_list:
-            tournament = entry['tournament']
-            service = entry['service']
-            judging = entry['judging']
-            date = entry['semester']
-            points = entry['points']
+        # Determining the current semester and creating tournament list
+        # Finding the Semesters directory
+        abs_path = os.getcwd()
+        sem_directory = abs_path + '/../Data/Semesters'
 
-            # Determining whether the tournament was judge, service or debater
-            if judging:
-                self.tour_attended[tournament + ' ' + date + ' (Judging)'] = points
+        # populating a list of all semester files
+        semester_file_list = os.listdir(sem_directory)
 
-            elif service:
-                self.tour_attended['Service ' + date] = points
+        # Cycling through each file and turning them into Semester objects.
+        sem_list = []
+        for file in semester_file_list:
+            sem_str = file.strip('.json')
+            sem = Semester(sem_str, file)
+            sem_list.append(sem)
 
-            else:
-                self.tour_attended[tournament + ' ' + date] = points
+        self._current_semester = max(sem_list)
+
+        # Populating event/tournament list
+        service_num = 1
+        for sem in sem_list:
+            tourn_list = sem.find_entry_debater_id(self.debater_id)
+            for tourn in tourn_list:
+                if tourn["service"] == True:
+                    self.tour_attended["Service "+str(service_num)] = tourn["points"]
+                    service_num += 1
+                else:
+                    self.tour_attended[tourn["tournament"]] = tourn["points"]
 
     def __str__(self) -> str:
         """
@@ -82,63 +96,125 @@ class Debater:
         return_str = ''
 
         for tour in self.tour_attended:
-            return_str = return_str + tour + ' > ' + self.tour_attended[tour] + '\n'
+            return_str = return_str + tour + ' > ' + str(self.tour_attended[tour]) + '\n'
 
         return return_str
 
-    def last_four_semester(self, debater_id: int) -> List[str]:
+    def last_four_semesters(self) -> List[Semester]:
         """
         Return the last 4 semesters a debater has debated in.
         """
 
-        entry_list = self.find_entry_debater_id(debater_id)
-        highest_date = []
+        # Finding the Semesters directory
+        abs_path = os.getcwd()
+        sem_directory = abs_path + '/../Data/Semesters'
 
-        # Populating the list of highest dates. The way it works is "Winter 2020" becomes 2020.5 and
-        # "Fall 2030" becomes 2030. Ie. Winter semesters get an additional .5 added onto the year
-        for entry in entry_list:
-            if entry['date'][0] == 'W':
-                year = int(entry['date'][7:11]) + 0.5
-            else:
-                year = int(entry['date'][5:9])
-            highest_date.append(year)
+        # populating a list of all semester files
+        semester_file_list = os.listdir(sem_directory)
+
+        # Cycling through each file and turning them into Semester objects. Also checking whether a debater has debated
+        # in these semesters or not
+        sem_list = []
+        for file in semester_file_list:
+
+            sem_str = file.strip('.json')
+            sem = Semester(sem_str, file)
+
+            debater_list = sem.find_entry_debater_id(self.debater_id)
+
+            # If the debater has debated in this semester, add them to the count
+            # NOTE that this includes semesters that people have serviced in but NOT debated in. I'm not sure if this is
+            # illegal but honestly that's not my issue :)
+            if debater_list:
+                sem_list.append(sem)
 
         # Determine the highest semester this debater has debated in
-        max_date = max(highest_date)
+        max_sem = max(sem_list)
+        max_date = max_sem.num_represent
 
         # If this debater's last semester was Fall:
         if max_date % 1 == 0:
-            max_date_str = "Fall " + str(int(max_date))
-            one_sem_before = "Winter " + str(int(max_date - 1))
-            two_sem_before = "Fall " + str(int(max_date - 1))
-            three_sem_before = "Winter " + str(int(max_date - 2))
+            one_sem_before = Semester("Winter " + str(int(max_date)), "Winter " + str(int(max_date)) + ".json")
+            two_sem_before = Semester("Fall " + str(int(max_date - 1)), "Fall " + str(int(max_date - 1)) + ".json")
+            three_sem_before = Semester("Winter " + str(int(max_date - 1)),
+                                        "Winter " + str(int(max_date - 1)) + ".json")
 
         # If this debater's last semester was Winter
         else:
-            max_date_str = "Winter " + str(int(max_date))
-            one_sem_before = "Fall " + str(int(max_date))
-            two_sem_before = "Winter " + str(int(max_date - 1))
-            three_sem_before = "Fall " + str(int(max_date - 1))
+            one_sem_before = Semester("Fall " + str(int(max_date - 1)), "Fall " + str(int(max_date - 1)) + ".json")
+            two_sem_before = Semester("Winter " + str(int(max_date - 1)), "Winter " + str(int(max_date - 1)) + ".json")
+            three_sem_before = Semester("Fall " + str(int(max_date - 2)), "Fall " + str(int(max_date - 2)) + ".json")
 
-        # return a list of the last 4 semesters in string format
-        return [max_date_str, one_sem_before, two_sem_before, three_sem_before]
+        # return a list of the last 4 semesters a debater has debated in
+        return [max_sem, one_sem_before, two_sem_before, three_sem_before]
 
-    def get_top_five(semester: str, debater_id: int) -> int:
+    def last_four_semester_minus_current(self) -> List[Semester]:
+        """
+        Return the last 4 semesters a debater has debated in.
+        Note that this doesn't count the CURRENT SEMESTER
+        """
+
+        # Finding the Semesters directory
+        abs_path = os.getcwd()
+        sem_directory = abs_path + '/../Data/Semesters'
+
+        # populating a list of all semester files
+        semester_file_list = os.listdir(sem_directory)
+
+        # Filtering out the current semester
+        sem_missing_current = list(filter(self._current_semester.semester_file.__ne__, semester_file_list))
+
+        # Cycling through each file and turning them into Semester objects. Also checking whether a debater has debated
+        # in these semesters or not
+        sem_list = []
+        for file in sem_missing_current:
+
+            sem_str = file.strip('.json')
+            sem = Semester(sem_str, file)
+
+            debater_list = sem.find_entry_debater_id(self.debater_id)
+
+            # If the debater has debated in this semester, add them to the count
+            # NOTE that this includes semesters that people have serviced in but NOT debated in. I'm not sure if this is
+            # illegal but honestly that's not my issue :)
+            if debater_list:
+                sem_list.append(sem)
+
+        # Determine the highest semester this debater has debated in
+        max_sem = max(sem_list)
+        max_date = max_sem.num_represent
+
+        # If this debater's last semester was Fall:
+        if max_date % 1 == 0:
+            one_sem_before = Semester("Winter " + str(int(max_date)), "Winter " + str(int(max_date)) + ".json")
+            two_sem_before = Semester("Fall " + str(int(max_date - 1)), "Fall " + str(int(max_date - 1)) + ".json")
+            three_sem_before = Semester("Winter " + str(int(max_date - 1)),
+                                        "Winter " + str(int(max_date - 1)) + ".json")
+
+        # If this debater's last semester was Winter
+        else:
+            one_sem_before = Semester("Fall " + str(int(max_date - 1)), "Fall " + str(int(max_date - 1)) + ".json")
+            two_sem_before = Semester("Winter " + str(int(max_date - 1)), "Winter " + str(int(max_date - 1)) + ".json")
+            three_sem_before = Semester("Fall " + str(int(max_date - 2)), "Fall " + str(int(max_date - 2)) + ".json")
+
+        # return a list of the last 4 semesters a debater has debated in
+        return [max_sem, one_sem_before, two_sem_before, three_sem_before]
+
+    def get_top_five_sem(self, sem: Semester) -> int:
         """
         Return the total points from a debaters top 5 tournaments attended that semester
         Note this only includes at max 3 competitive tournaments.
         """
-
         tourn_counter = 0  # Keeps count of total tournaments up to 5
         comp_tourn = 0  # Keeps count of total competitive tournaments up to 3
         points = 0
 
-        entry_list = find_entry_debater_id(debater_id)
+        entry_list = sem.find_entry_debater_id(self.debater_id)
         filtered_list = []
 
         # Creating the filtered list one tournament at a time
         for entry in entry_list:
-            if (entry['semester'] == semester) and (entry['service'] is False):
+            if (entry['semester'] == sem.semester) and (entry['service'] is False):
                 filtered_list.append(entry)
 
         # Organizing the filtered list
@@ -162,3 +238,62 @@ class Debater:
                 break
 
         return points
+
+    def calculate_service_points_sem(self, sem: Semester) -> int:
+        """
+        Calculate a debaters service points in one semester
+        """
+
+        entry_list = sem.find_entry_debater_id(self.debater_id)
+
+        filtered_entry_list = []
+
+        # Creating the filtered list one event at a time
+        for entry in entry_list:
+            if entry['service']:
+                filtered_entry_list.append(entry)
+
+        service_points = 0
+        for entry in filtered_entry_list:
+            if sem.semester == entry['semester']:
+                service_points += entry['points']
+
+        return service_points
+
+    def calculate_service_points(self):
+        four_semesters = self.last_four_semesters()
+
+        service_points = 0
+
+        # # Determining if this debater has been on break
+        # if
+        # for sem in four_semesters:
+        #     if self._current_semester == sem:
+        #         service_points += self.calculate_service_points_sem(sem)
+        #
+        #     if self._current_semester.num_represent ==
+
+    def calculate_comp_points(self) -> int:
+        comp_points = 0
+        curr_num = self._current_semester.num_represent
+        four_sem = self.last_four_semester_minus_current()
+
+        if (curr_num - 0.5 == four_sem[0] or
+                curr_num - 1 == four_sem[0] or
+                curr_num - 1.5 == four_sem[0]):
+
+            for sem in four_sem:
+                comp_points += self.get_top_five_sem(sem)
+        else:
+            for sem in four_sem:
+                if curr_num - 3 <= sem.num_represent:
+                    comp_points += self.get_top_five_sem(sem)
+        return comp_points
+
+    def calculate_total_points(self) -> int:
+        """
+        Calculate a debaters total relevant points
+        """
+
+        return (self.calculate_comp_points()
+                + self.calculate_service_points())

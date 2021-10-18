@@ -23,7 +23,7 @@
             "points": 9
         },
         {
-            "entry_id": 84024,
+            "entry_id": 840246,
             "id_debater": 243512,
             "name": "Adam Banihani",
             "service": false,
@@ -98,6 +98,61 @@
             "tournament": "",
             "semester": "Fall 2020",
             "points": 13
+        },
+        {
+            "entry_id": 803800,
+            "id_debater": 357944,
+            "name": "Serena Yuan",
+            "service": false,
+            "service_position": false,
+            "judging": true,
+            "tournament": "Hart House IV",
+            "semester": "Fall 2020",
+            "points": 9
+        },
+        {
+            "entry_id": 796630,
+            "id_debater": 357944,
+            "name": "Serena Yuan",
+            "service": false,
+            "service_position": false,
+            "judging": true,
+            "tournament": "North American University Debating Championships",
+            "semester": "Fall 2020",
+            "points": 27
+        },
+        {
+            "entry_id": 654008,
+            "id_debater": 357944,
+            "name": "Serena Yuan",
+            "service": false,
+            "service_position": false,
+            "judging": false,
+            "tournament": "McMaster Pro-Am",
+            "semester": "Fall 2020",
+            "points": 15.625
+        },
+        {
+            "entry_id": 636178,
+            "id_debater": 357944,
+            "name": "Serena Yuan",
+            "service": false,
+            "service_position": false,
+            "judging": false,
+            "tournament": "Korea Pre-WUDC",
+            "semester": "Fall 2020",
+            "points": 25.945945945945944
+        },
+        {
+            "entry_id": 940246,
+            "id_debater": 357944,
+            "name": "Serena Yuan",
+            "service": false,
+            "service_position": false,
+            "judging": false,
+            "tournament": "Central Novice",
+            "semester": "Fall 2020",
+            "points": 16.591549295774648
         }
     ]
 }

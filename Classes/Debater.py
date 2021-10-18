@@ -134,16 +134,16 @@ class Debater:
 
         # If this debater's last semester was Fall:
         if max_date % 1 == 0:
-            one_sem_before = Semester("Winter " + str(int(max_date - 1)), "Winter " + str(int(max_date - 1)) + ".json")
+            one_sem_before = Semester("Winter " + str(int(max_date)), "Winter " + str(int(max_date)) + ".json")
             two_sem_before = Semester("Fall " + str(int(max_date - 1)), "Fall " + str(int(max_date - 1)) + ".json")
-            three_sem_before = Semester("Winter " + str(int(max_date - 2)),
-                                        "Winter " + str(int(max_date - 2)) + ".json")
+            three_sem_before = Semester("Winter " + str(int(max_date - 1)),
+                                        "Winter " + str(int(max_date - 1)) + ".json")
 
         # If this debater's last semester was Winter
         else:
-            one_sem_before = Semester("Fall " + str(int(max_date)), "Fall " + str(int(max_date)) + ".json")
+            one_sem_before = Semester("Fall " + str(int(max_date - 1)), "Fall " + str(int(max_date - 1)) + ".json")
             two_sem_before = Semester("Winter " + str(int(max_date - 1)), "Winter " + str(int(max_date - 1)) + ".json")
-            three_sem_before = Semester("Fall " + str(int(max_date - 1)), "Fall " + str(int(max_date - 1)) + ".json")
+            three_sem_before = Semester("Fall " + str(int(max_date - 2)), "Fall " + str(int(max_date - 2)) + ".json")
 
         # return a list of the last 4 semesters a debater has debated in
         return [max_sem, one_sem_before, two_sem_before, three_sem_before]
@@ -186,16 +186,16 @@ class Debater:
 
         # If this debater's last semester was Fall:
         if max_date % 1 == 0:
-            one_sem_before = Semester("Winter " + str(int(max_date - 1)), "Winter " + str(int(max_date - 1)) + ".json")
+            one_sem_before = Semester("Winter " + str(int(max_date)), "Winter " + str(int(max_date)) + ".json")
             two_sem_before = Semester("Fall " + str(int(max_date - 1)), "Fall " + str(int(max_date - 1)) + ".json")
-            three_sem_before = Semester("Winter " + str(int(max_date - 2)),
-                                        "Winter " + str(int(max_date - 2)) + ".json")
+            three_sem_before = Semester("Winter " + str(int(max_date - 1)),
+                                        "Winter " + str(int(max_date - 1)) + ".json")
 
         # If this debater's last semester was Winter
         else:
-            one_sem_before = Semester("Fall " + str(int(max_date)), "Fall " + str(int(max_date)) + ".json")
+            one_sem_before = Semester("Fall " + str(int(max_date - 1)), "Fall " + str(int(max_date - 1)) + ".json")
             two_sem_before = Semester("Winter " + str(int(max_date - 1)), "Winter " + str(int(max_date - 1)) + ".json")
-            three_sem_before = Semester("Fall " + str(int(max_date - 1)), "Fall " + str(int(max_date - 1)) + ".json")
+            three_sem_before = Semester("Fall " + str(int(max_date - 2)), "Fall " + str(int(max_date - 2)) + ".json")
 
         # return a list of the last 4 semesters a debater has debated in
         return [max_sem, one_sem_before, two_sem_before, three_sem_before]
@@ -297,6 +297,3 @@ class Debater:
 
         return (self.calculate_comp_points()
                 + self.calculate_service_points())
-
-arpi = Debater(463871)
-print(arpi)

@@ -35,6 +35,8 @@ class Debater:
 
         self.debater_id = debater_id
         self.working_points = 0
+        # TODO: have a way to update working_points
+
         self.tour_attended = {}
 
         # TODO: Create a file that matches debater id to debater name. use this in the constructor

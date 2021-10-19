@@ -1,6 +1,7 @@
 from typing import List
 import os
-from Semester import Semester
+import csv
+from Classes.Semester import Semester
 
 
 class Debater:
@@ -41,7 +42,7 @@ class Debater:
         # Go to Debater Directory
         abs_path = os.getcwd()
         debater_directory = abs_path + '/../Data/Debaters'
-        self.name = ""
+        self.name = ''
 
         # Determining the current semester and creating tournament list
         # Finding the Semesters directory
@@ -90,6 +91,9 @@ class Debater:
                 '--- Tournaments/Events Attended --- \n' +
                 self.return_tournaments()
         )
+
+        # TODO: print the relevant tournaments (ones that contribute to point total) only. Create a separate function
+        #  to print all tournaments. Additionally, print point total under the ID
 
     def return_tournaments(self) -> str:
         """ Return all tournaments attended """
@@ -179,6 +183,10 @@ class Debater:
             # illegal but honestly that's not my issue :)
             if debater_list:
                 sem_list.append(sem)
+
+        if len(sem_list) == 0:
+            ...
+            # TODO: if they haven't debated in any semesters yet, return empty body instead of error
 
         # Determine the highest semester this debater has debated in
         max_sem = max(sem_list)
@@ -328,3 +336,5 @@ class Debater:
 
         return int((self.multiplier() * self.calculate_comp_points())
                    + self.calculate_service_points())
+
+

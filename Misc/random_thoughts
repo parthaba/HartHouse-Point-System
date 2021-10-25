@@ -8,4 +8,5 @@ misc.
 
 
 to_do
-- create a file that matches debater ids to debater names, use this file when creating Debater objects
+- create a way to prevent duplicate entries from being logged
+- find a way to match id to name

@@ -1,1 +1,81 @@
-{"entry":  []}
+{
+    "entry": [
+        {
+            "entry_id": 218523,
+            "id_debater": 119567,
+            "name": "Chris Pang",
+            "service": false,
+            "service_position": false,
+            "judging": false,
+            "tournament": "NAUDC",
+            "semester": "Fall 2019",
+            "points": 52.7
+        },
+        {
+            "entry_id": 363959,
+            "id_debater": 119567,
+            "name": "Chris Pang",
+            "service": false,
+            "service_position": false,
+            "judging": false,
+            "tournament": "Yale IV",
+            "semester": "Fall 2019",
+            "points": 47.73033707865169
+        },
+        {
+            "entry_id": 493844,
+            "id_debater": 119567,
+            "name": "Chris Pang",
+            "service": false,
+            "service_position": false,
+            "judging": true,
+            "tournament": "HHIV",
+            "semester": "Fall 2019",
+            "points": 27
+        },
+        {
+            "entry_id": 609231,
+            "id_debater": 119567,
+            "name": "Chris Pang",
+            "service": false,
+            "service_position": false,
+            "judging": false,
+            "tournament": "Thailand WUDC",
+            "semester": "Fall 2019",
+            "points": 63.38501291989664
+        },
+        {
+            "entry_id": 857083,
+            "id_debater": 119567,
+            "name": "Chris Pang",
+            "service": false,
+            "service_position": false,
+            "judging": false,
+            "tournament": "Oxford IV",
+            "semester": "Fall 2019",
+            "points": 41.91240875912409
+        },
+        {
+            "entry_id": 234586,
+            "id_debater": 119567,
+            "name": "Chris Pang",
+            "service": false,
+            "service_position": false,
+            "judging": false,
+            "tournament": "Cambridge IV",
+            "semester": "Fall 2019",
+            "points": 36.0
+        },
+        {
+            "entry_id": 458023,
+            "id_debater": 119567,
+            "name": "Chris Pang",
+            "service": false,
+            "service_position": false,
+            "judging": true,
+            "tournament": "Central Novice",
+            "semester": "Fall 2019",
+            "points": 9
+        }
+    ]
+}

@@ -153,6 +153,127 @@
             "tournament": "Central Novice",
             "semester": "Fall 2020",
             "points": 16.591549295774648
+        },
+        {
+            "entry_id": 831387,
+            "id_debater": 243512,
+            "name": "Adam Banihani",
+            "service": true,
+            "service_position": false,
+            "judging": false,
+            "tournament": "",
+            "semester": "Fall 2020",
+            "points": 5
+        },
+        {
+            "entry_id": 538724,
+            "id_debater": 119567,
+            "name": "Chris Pang",
+            "service": false,
+            "service_position": false,
+            "judging": true,
+            "tournament": "Central Novice",
+            "semester": "Fall 2020",
+            "points": 9
+        },
+        {
+            "entry_id": 654887,
+            "id_debater": 119567,
+            "name": "Chris Pang",
+            "service": false,
+            "service_position": false,
+            "judging": false,
+            "tournament": "HWS RR",
+            "semester": "Fall 2020",
+            "points": 61.25
+        },
+        {
+            "entry_id": 579371,
+            "id_debater": 119567,
+            "name": "Chris Pang",
+            "service": false,
+            "service_position": false,
+            "judging": true,
+            "tournament": "HHIV ",
+            "semester": "Fall 2020",
+            "points": 27
+        },
+        {
+            "entry_id": 252580,
+            "id_debater": 119567,
+            "name": "Chris Pang",
+            "service": false,
+            "service_position": false,
+            "judging": false,
+            "tournament": "NAUDC",
+            "semester": "Fall 2020",
+            "points": 49.2
+        },
+        {
+            "entry_id": 531882,
+            "id_debater": 119567,
+            "name": "Chris Pang",
+            "service": false,
+            "service_position": false,
+            "judging": false,
+            "tournament": "Oxford IV",
+            "semester": "Fall 2020",
+            "points": 52.516129032258064
+        },
+        {
+            "entry_id": 526292,
+            "id_debater": 119567,
+            "name": "Chris Pang",
+            "service": false,
+            "service_position": false,
+            "judging": false,
+            "tournament": "Cambridge IV",
+            "semester": "Fall 2020",
+            "points": 44.79310344827586
+        },
+        {
+            "entry_id": 367444,
+            "id_debater": 119567,
+            "name": "Chris Pang",
+            "service": false,
+            "service_position": false,
+            "judging": true,
+            "tournament": "BP Champs",
+            "semester": "Fall 2020",
+            "points": 18
+        },
+        {
+            "entry_id": 267129,
+            "id_debater": 119567,
+            "name": "Chris Pang",
+            "service": true,
+            "service_position": false,
+            "judging": false,
+            "tournament": "",
+            "semester": "Fall 2020",
+            "points": 15
+        },
+        {
+            "entry_id": 332281,
+            "id_debater": 916093,
+            "name": "Dihan Niloy",
+            "service": false,
+            "service_position": false,
+            "judging": true,
+            "tournament": "HartHouse IV",
+            "semester": "Fall 2020",
+            "points": 9
+        },
+        {
+            "entry_id": 995510,
+            "id_debater": 548561,
+            "name": "Varun Lodaya",
+            "service": true,
+            "service_position": false,
+            "judging": false,
+            "tournament": "",
+            "semester": "Fall 2020",
+            "points": 13
         }
     ]
 }

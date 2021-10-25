@@ -5,26 +5,17 @@ import csv
 
 class AddEntry:
     """Add an entry into one of the semester files."""
-    FALL_2017 = "Semesters/Fall 2017.json"
-    FALL_2018 = "Semesters/Fall 2018.json"
     FALL_2019 = "Semesters/Fall 2019.json"
-    FALL_2020 = "Semesters/Fall 2020.json"
-    WINTER_2018 = "Semesters/Winter 2018.json"
-    WINTER_2019 = "Semesters/Winter 2019.json"
     WINTER_2020 = "Semesters/Winter 2020.json"
+    FALL_2020 = "Semesters/Fall 2020.json"
     WINTER_2021 = "Semesters/Winter 2021.json."
-
     SEMESTER_DICT = {"Fall 2019": FALL_2019,
                      "Winter 2020": WINTER_2021,
                      "Fall 2020": FALL_2020,
-                     "Winter 2021": WINTER_2021,
-                     "Fall 2017": FALL_2017,
-                     "Fall 2018": FALL_2018,
-                     "Winter 2019": WINTER_2019,
-                     "Winter 2018": WINTER_2018}
+                     "Winter 2021": WINTER_2021}
 
-    SEMESTER_LIST = ['Fall 2017', 'Fall 2018', 'Fall 2019', 'Fall 2020',
-                     'Winter 2018', 'Winter 2019', 'Winter 2020', 'Winter 2021']
+    YES = ['y', 'Y', '<y>', 'yes', 'YES', 'Yes', 'yEs', 'yeS', 'YEs', 'yES', 'YeS']
+    NO = ['n', 'N', '<n>', 'no', 'NO', 'No', 'nO']
 
     entry_id: int
     debater_id: int
@@ -32,28 +23,71 @@ class AddEntry:
     semester_file: str
     semester: str
 
-    def __init__(self, debater_id: int, semester: str):
+    def __init__(self):
         """Initialize an AddEntry object."""
+        debater_id = int(input("Enter the debater ID: "))
 
-        self.entry_id = create_unique_entry_id()
         self.debater_id = debater_id
         self.debater_name = match_id_to_name(debater_id)
+        print("Debater: " + self.debater_name)
 
-        if semester in self.SEMESTER_LIST:
-            self.semester_file = self.SEMESTER_DICT[semester]
-            self.semester = semester
+        continue_inputting = True
+        while continue_inputting:
+            self.add_entry()
+
+            answer = input("Would you like to add another entry for this member?")
+            if answer in self.NO:
+                continue_inputting = False
+            elif answer in self.YES:
+                continue_inputting = True
+            else:
+                raise ValueError
+
+    def add_entry(self) -> None:
+        """Add points to a debater."""
+
+        self.entry_id = create_unique_entry_id()
+
+        semester = input("Enter the semester (e.x Fall 2018): ")
+        self.semester = semester
+        self.semester_file = self.SEMESTER_DICT[semester]
+
+        service = input("Are these service points? Enter <y> if yes, enter <n> if no.")
+        if service == 'y' or service == "Y" or service == '<y>':
+            # Adding service points
+            self.add_service_points()
+
+        elif service == 'n' or service == "N" or service == '<n>':
+            # Adding tournament points
+            self.add_tournament_points()
         else:
             raise ValueError
 
-    def record_entry_id(self) -> None:
-        """Record the unique entry_id used."""
-
+        # Recording the ID used
         with open("data_entry_ids.csv", 'a') as csvfile:
             csv_writer = csv.writer(csvfile)
             csv_writer.writerow([self.entry_id])
 
-    def add_service_points(self, points: int, position: bool) -> None:
+            # # Give option to add another entry
+            # continue_add = input("Would you like to add another data entry for this debater? "
+            #                      "Enter <y> if yes, enter <n> if no.")
+            # if continue_add in self.YES:
+            #     continue_adding = True
+            # elif service == self.NO:
+            #     continue_adding = False
+            # else:
+            #     raise ValueError
+
+    def add_service_points(self) -> None:
         """Adds service points to a member of the club."""
+        points = int(input("Enter the amount of service points earned as an integer."))
+        position = input("Were these points earned from a special position? Enter <y> if yes, enter <n> if no.")
+        if position in self.YES:
+            position = True
+        elif position in self.NO:
+            position = False
+        else:
+            raise ValueError
 
         add_entry(self.semester_file,  # Which semester file
                   self.entry_id,  # Unique entry ID
@@ -66,10 +100,36 @@ class AddEntry:
                   self.semester,  # The semester that these points were earned
                   points)  # The number of points earned
 
-        self.record_entry_id()
+    def add_tournament_points(self) -> None:
+        """Depending on whether the debater judged or competed, add the appropriate points."""
 
-    def tournament_judging(self, tier: int, tournament_name: str, break_as_judge: bool) -> None:
+        tournament_name = input("Enter the tournament name: ")
+        tier = int(input("Enter the tier of the tournament: "))
+
+        judging = input("Did this person judge? Enter <y> if yes, enter <n> if no.")
+        if judging in self.YES:
+
+            # Judging
+            self.tournament_judging(tier, tournament_name)
+
+        elif judging in self.NO:
+
+            # Debating
+            self.tournament_debating(tier, tournament_name)
+
+        else:
+            raise ValueError
+
+    def tournament_judging(self, tier: int, tournament_name: str) -> None:
         """Calculate points earned from judging."""
+
+        break_as_judge = input("Did this person break as a judge? Enter <y> if yes, <n> if no.")
+        if break_as_judge in self.YES:
+            break_as_judge = True
+        elif break_as_judge in self.NO:
+            break_as_judge = False
+        else:
+            raise ValueError
 
         points = calculate_points_judging(tier, break_as_judge)
 
@@ -84,11 +144,11 @@ class AddEntry:
                   self.semester,  # The semester that these points were earned
                   points)  # The number of points earned
 
-        self.record_entry_id()
-
-    def tournament_debating(self, tier: int, tournament_name: str, tournament_size: int,
-                            team_place: int, speaker_place: int) -> None:
+    def tournament_debating(self, tier: int, tournament_name: str) -> None:
         """Calculate points earned from debating."""
+        tournament_size = int(input("Enter the number of teams at the tournament: "))
+        team_place = int(input("Enter where this team ranked on the tab: "))
+        speaker_place = int(input("Enter where this speaker ranked on the tab: "))
 
         points = calculate_points_debating(tier, tournament_size, team_place, speaker_place)
 
@@ -102,8 +162,6 @@ class AddEntry:
                   tournament_name,  # Name of tournament (if service, empty string)
                   self.semester,  # The semester that these points were earned
                   points)  # The number of points earned
-
-        self.record_entry_id()
 
 
 def create_unique_entry_id() -> int:
@@ -143,7 +201,6 @@ def match_id_to_name(debater_id: int) -> str:
 
             row_number += 1
 
-        print(debater_id)
         raise Exception("Did not find a debater with this ID.")
 
 
@@ -202,3 +259,6 @@ def calculate_points_judging(tier: int, break_as_judge: bool) -> int:
         else:
             return 3
 
+
+# Run the file
+new_debater = AddEntry()

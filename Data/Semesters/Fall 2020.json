@@ -406,6 +406,39 @@
             "tournament": "",
             "semester": "Fall 2020",
             "points": 5
+        },
+        {
+            "entry_id": 499392,
+            "id_debater": 588665,
+            "name": "Elgin Lin",
+            "service": false,
+            "service_position": false,
+            "judging": true,
+            "tournament": "HHIV ",
+            "semester": "Fall 2020",
+            "points": 9
+        },
+        {
+            "entry_id": 499391,
+            "id_debater": 588665,
+            "name": "Elgin Lin",
+            "service": false,
+            "service_position": false,
+            "judging": false,
+            "tournament": "N/A",
+            "semester": "Fall 2020",
+            "points": 1.66
+        },
+        {
+            "entry_id": 499393,
+            "id_debater": 588665,
+            "name": "Elgin Lin",
+            "service": false,
+            "service_position": false,
+            "judging": false,
+            "tournament": "N/A",
+            "semester": "Fall 2020",
+            "points": 1.03
         }
     ]
 }

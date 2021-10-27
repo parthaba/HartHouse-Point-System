@@ -7,7 +7,7 @@ class TeamMaker:
     """Creates a list of teams.
 
     Instance attributes:
-        - team_list: a list of tuples. each tuple contains two debater ids
+        - team_list: a list of lists. each inner list contains two debater ids
         - number_of_teams: the number of teams competing in the qualifier
 
     Representation invariants:
@@ -21,19 +21,18 @@ class TeamMaker:
         """Construct a new TeamMaker object."""
         self.team_list = []
         self.number_of_teams = number_of_teams
-        self.create_team_ids()
 
     def create_team_ids(self) -> None:
         """Fill the team_list attribute."""
         current_team = 1
         for x in range(self.number_of_teams):
-            x = int(input("Input debater id of first debater in the format <id_1> "
+            debater_one = int(input("Input debater id of first debater in the format <id_1> "
                           "for team " + str(current_team) + "."))
-            y = int(input("Input debater id of second debater in the format <id_2> "
+            debater_two = int(input("Input debater id of second debater in the format <id_2> "
                           "for team " + str(current_team) + "."))
 
             current_team += 1
-            self.team_list.append([x, y])
+            self.team_list.append([debater_one, debater_two])
 
         if len(self.team_list) == self.number_of_teams:
             print("Teams added!")
@@ -47,8 +46,7 @@ class TeamMaker:
             debater2 = Debater(team_ids[1])
 
             names = [debater1.name, debater2.name]
-            # TODO: figure out how to parse the last names from each name
-            team_name = "lebron"
+            team_name = names[0] + " & " + names[1]
 
             new_team = Team(team_ids, names, team_name)
             list_of_teams_so_far.append(new_team)

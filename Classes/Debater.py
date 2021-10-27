@@ -25,7 +25,7 @@ class Debater:
     """
 
     debater_id: int
-    working_points: int
+    working_points: float
     tour_attended: dict
     name: str
     _current_semester: Semester
@@ -39,12 +39,12 @@ class Debater:
 
         self.tour_attended = {}
 
-        # TODO: Create a file that matches debater id to debater name. use this in the constructor
         # Allocating name
         # Go to Debater Directory
         abs_path = os.getcwd()
         debater_directory = abs_path + '/../Data/Debaters'
         self.name = ''
+        # TODO: Create a file that matches debater id to debater name. use this in the constructor
 
         # Determining the current semester and creating tournament list
         # Finding the Semesters directory
@@ -96,6 +96,15 @@ class Debater:
 
         # TODO: print the relevant tournaments (ones that contribute to point total) only. Create a separate function
         #  to print all tournaments. Additionally, print point total under the ID
+
+    def set_working_points(self, points: float):
+        """Setter method for self.working_points."""
+        self.working_points = points
+
+    def reset_debater(self, name: str, points: float):
+        """Set name and point values for a Debater object."""
+        self.name = name
+        self.working_points = points
 
     def return_tournaments(self) -> str:
         """ Return all tournaments attended """
@@ -248,6 +257,10 @@ class Debater:
                 break
 
         return points
+
+    def return_semester_breakdown(self, sem: str):
+        """Return the relevant tournaments and their corresponding point totals from a given semester."""
+        # TODO: Implement this function
 
     def calculate_service_points_sem(self, sem: Semester, last_in_list: bool) -> int:
         """

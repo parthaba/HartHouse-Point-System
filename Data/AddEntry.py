@@ -5,10 +5,11 @@ import csv
 
 class AddEntry:
     """Add an entry into one of the semester files."""
-    FALL_2017 = "Semesters/Fall 2017.json"
+
     FALL_2018 = "Semesters/Fall 2018.json"
     FALL_2019 = "Semesters/Fall 2019.json"
     FALL_2020 = "Semesters/Fall 2020.json"
+    FALL_2021 = "Semesters/Fall 2021.json"
     WINTER_2018 = "Semesters/Winter 2018.json"
     WINTER_2019 = "Semesters/Winter 2019.json"
     WINTER_2020 = "Semesters/Winter 2020.json"

@@ -274,6 +274,138 @@
             "tournament": "",
             "semester": "Fall 2020",
             "points": 13
+        },
+        {
+            "entry_id": 955202,
+            "id_debater": 873585,
+            "name": "Tanvir Shahriar",
+            "service": false,
+            "service_position": false,
+            "judging": true,
+            "tournament": "HHIV",
+            "semester": "Fall 2020",
+            "points": 9
+        },
+        {
+            "entry_id": 201855,
+            "id_debater": 873585,
+            "name": "Tanvir Shahriar",
+            "service": false,
+            "service_position": false,
+            "judging": true,
+            "tournament": "N/A",
+            "semester": "Fall 2020",
+            "points": 18
+        },
+        {
+            "entry_id": 743341,
+            "id_debater": 873585,
+            "name": "Tanvir Shahriar",
+            "service": false,
+            "service_position": false,
+            "judging": false,
+            "tournament": "N/A",
+            "semester": "Fall 2020",
+            "points": 13.812080536912752
+        },
+        {
+            "entry_id": 861563,
+            "id_debater": 873585,
+            "name": "Tanvir Shahriar",
+            "service": false,
+            "service_position": false,
+            "judging": true,
+            "tournament": "N/A",
+            "semester": "Fall 2020",
+            "points": 18.7
+        },
+        {
+            "entry_id": 927976,
+            "id_debater": 873585,
+            "name": "Tanvir Shahriar",
+            "service": false,
+            "service_position": false,
+            "judging": false,
+            "tournament": "N/A",
+            "semester": "Fall 2020",
+            "points": 20.88888888888889
+        },
+        {
+            "entry_id": 416530,
+            "id_debater": 168895,
+            "name": "Simren Sharma",
+            "service": false,
+            "service_position": false,
+            "judging": true,
+            "tournament": "HHIV",
+            "semester": "Fall 2020",
+            "points": 27
+        },
+        {
+            "entry_id": 780929,
+            "id_debater": 168895,
+            "name": "Simren Sharma",
+            "service": false,
+            "service_position": false,
+            "judging": false,
+            "tournament": "Oxford IV",
+            "semester": "Fall 2020",
+            "points": 19.483870967741936
+        },
+        {
+            "entry_id": 254597,
+            "id_debater": 168895,
+            "name": "Simren Sharma",
+            "service": false,
+            "service_position": false,
+            "judging": true,
+            "tournament": "Cambridge IV",
+            "semester": "Fall 2020",
+            "points": 9
+        },
+        {
+            "entry_id": 675145,
+            "id_debater": 168895,
+            "name": "Simren Sharma",
+            "service": false,
+            "service_position": false,
+            "judging": false,
+            "tournament": "Doxbridge 3",
+            "semester": "Fall 2020",
+            "points": 29.32075471698113
+        },
+        {
+            "entry_id": 900493,
+            "id_debater": 168895,
+            "name": "Simren Sharma",
+            "service": false,
+            "service_position": false,
+            "judging": false,
+            "tournament": "UMSU",
+            "semester": "Fall 2020",
+            "points": 22.952380952380953
+        },
+        {
+            "entry_id": 650361,
+            "id_debater": 168895,
+            "name": "Simren Sharma",
+            "service": true,
+            "service_position": false,
+            "judging": false,
+            "tournament": "",
+            "semester": "Fall 2020",
+            "points": 17
+        },
+        {
+            "entry_id": 119751,
+            "id_debater": 588665,
+            "name": "Elgin Lin",
+            "service": true,
+            "service_position": false,
+            "judging": false,
+            "tournament": "",
+            "semester": "Fall 2020",
+            "points": 5
         }
     ]
 }

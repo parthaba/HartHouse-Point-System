@@ -5,14 +5,20 @@ import csv
 
 class AddEntry:
     """Add an entry into one of the semester files."""
+
+    FALL_2018 = "Semesters/Fall 2018.json"
     FALL_2019 = "Semesters/Fall 2019.json"
-    WINTER_2020 = "Semesters/Winter 2020.json"
     FALL_2020 = "Semesters/Fall 2020.json"
+    FALL_2021 = "Semesters/Fall 2021.json"
+    WINTER_2018 = "Semesters/Winter 2018.json"
+    WINTER_2019 = "Semesters/Winter 2019.json"
+    WINTER_2020 = "Semesters/Winter 2020.json"
     WINTER_2021 = "Semesters/Winter 2021.json."
     SEMESTER_DICT = {"Fall 2019": FALL_2019,
-                     "Winter 2020": WINTER_2021,
+                     "Winter 2020": WINTER_2020,
                      "Fall 2020": FALL_2020,
-                     "Winter 2021": WINTER_2021}
+                     "Winter 2021": WINTER_2021,
+                     "Fall 2021": FALL_2021}
 
     YES = ['y', 'Y', '<y>', 'yes', 'YES', 'Yes', 'yEs', 'yeS', 'YEs', 'yES', 'YeS']
     NO = ['n', 'N', '<n>', 'no', 'NO', 'No', 'nO']

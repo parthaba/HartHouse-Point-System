@@ -34,17 +34,21 @@ class Debater:
         """ Initialize a debater """
 
         self.debater_id = debater_id
-        self.working_points = 0
-        # TODO: have a way to update working_points
 
         self.tour_attended = {}
 
         # Allocating name
-        # Go to Debater Directory
-        abs_path = os.getcwd()
-        debater_directory = abs_path + '/../Data/Debaters'
-        self.name = ''
-        # TODO: Create a file that matches debater id to debater name. use this in the constructor
+        with open('../Data/Debaters/id_list.csv') as name_file:
+            csv_reader = csv.reader(name_file, delimiter=',')
+            id_reader = []
+            for row in csv_reader:
+                if row:
+                    if row[1][1] in ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']:
+                        id_reader.append(row)
+            for row in id_reader:
+                if int(row[1]) == debater_id:
+                    self.name = str(row[0])
+                    break
 
         # Determining the current semester and creating tournament list
         # Finding the Semesters directory
@@ -74,28 +78,28 @@ class Debater:
                 else:
                     self.tour_attended[tourn["semester"] + ": " + tourn["tournament"]] = tourn["points"]
 
+        self.working_points = self.calculate_total_points()
+
     def __str__(self) -> str:
         """
         String representation of debater instance
-        Will return Name, debater id, and tournament list. ie.
+        Will return Name, debater id, and relevant tournament list. ie.
 
         Name: Ameen Parthab
         id: 1
         Tournaments attended
-        WUDC Fall 2019 > 50
-        HWS RR Winter 2020 > 40
+        WUDC Fall 2019 > 89.123120938102938
+        HWS RR Winter 2020 > 88.123123123123123
 
         """
 
         return (
                 'Name: ' + self.name + '\n' +
-                'id: ' + str(self.debater_id) + '\n' +
+                'ID: ' + str(self.debater_id) + '\n' +
+                'Total Points: '+ str(self.working_points) + '\n' +
                 '--- Tournaments/Events Attended --- \n' +
-                self.return_tournaments()
+                self.all_relevant_tourn_str().strip('\n')
         )
-
-        # TODO: print the relevant tournaments (ones that contribute to point total) only. Create a separate function
-        #  to print all tournaments. Additionally, print point total under the ID
 
     def set_working_points(self, points: float):
         """Setter method for self.working_points."""
@@ -195,9 +199,8 @@ class Debater:
             if debater_list:
                 sem_list.append(sem)
 
-        if len(sem_list) == 0:
-            ...
-            # TODO: if they haven't debated in any semesters yet, return empty body instead of error
+        if not sem_list:
+            return []
 
         # Determine the highest semester this debater has debated in
         max_sem = max(sem_list)
@@ -238,7 +241,7 @@ class Debater:
 
         # Organizing the filtered list
         # This will sort the list by points in descending order
-        filtered_list.sort(key=lambda x: x.get('points'), reverse=False)
+        filtered_list.sort(key=lambda x: x.get('points'), reverse=True)
 
         for entry in filtered_list:
 
@@ -257,6 +260,62 @@ class Debater:
                 break
 
         return points
+
+    def get_top_five_sem_returnstr(self, sem: Semester) -> str:
+        """
+        Return the total points from a debaters top 5 tournaments attended that semester
+        Note this only includes at max 3 competitive tournaments.
+        """
+        tourn_counter = 0  # Keeps count of total tournaments up to 5
+        comp_tourn = 0  # Keeps count of total competitive tournaments up to 3
+        return_str = ''
+
+        entry_list = sem.find_entry_debater_id(self.debater_id)
+        filtered_list = []
+
+        # Creating the filtered list one tournament at a time
+        for entry in entry_list:
+            if (entry['semester'] == sem.semester) and (entry['service'] is False):
+                filtered_list.append(entry)
+
+        # Organizing the filtered list
+        # This will sort the list by points in descending order
+        filtered_list.sort(key=lambda x: x.get('points'), reverse=True)
+
+        for entry in filtered_list:
+
+            # Check if the tournament was judging or competitive; add points accordingly
+            if entry["judging"]:
+                tourn_counter += 1
+                return_str = return_str + entry["semester"] + ": " + entry["tournament"] + ' (Judging) > ' + str(entry["points"]) + '\n'
+
+            elif comp_tourn < 3:
+                tourn_counter += 1
+                comp_tourn += 1
+                return_str = return_str + entry["semester"] + ": " + entry["tournament"] + ' > ' + str(entry["points"]) + '\n'
+
+            # Can only have 5 tournaments max
+            if tourn_counter == 5:
+                break
+
+        return return_str
+
+    def all_relevant_tourn_str(self) -> str:
+        return_str = ''
+        curr_num = self._current_semester.num_represent
+        four_sem = self.last_four_semester_minus_current()
+
+        if (curr_num - 0.5 == four_sem[0] or
+                curr_num - 1 == four_sem[0] or
+                curr_num - 1.5 == four_sem[0]):
+
+            for sem in four_sem:
+                return_str += self.get_top_five_sem_returnstr(sem)
+        else:
+            for sem in four_sem:
+                if curr_num - 3 <= sem.num_represent:
+                    return_str += self.get_top_five_sem_returnstr(sem)
+        return return_str
 
     def return_semester_breakdown(self, sem: str):
         """Return the relevant tournaments and their corresponding point totals from a given semester."""

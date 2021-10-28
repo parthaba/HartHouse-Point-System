@@ -131,6 +131,39 @@
             "tournament": "TayDo",
             "semester": "Winter 2020",
             "points": 26.555555555555557
+        },
+        {
+            "entry_id": 990933,
+            "id_debater": 459855,
+            "name": "Saara Meghji",
+            "service": false,
+            "service_position": false,
+            "judging": false,
+            "tournament": "NorthAms",
+            "semester": "Winter 2020",
+            "points": 6.436363636363634
+        },
+        {
+            "entry_id": 649962,
+            "id_debater": 459855,
+            "name": "Saara Meghji",
+            "service": false,
+            "service_position": false,
+            "judging": false,
+            "tournament": "CP Nationals",
+            "semester": "Winter 2020",
+            "points": 1.5238095238095237
+        },
+        {
+            "entry_id": 533116,
+            "id_debater": 459855,
+            "name": "Saara Meghji",
+            "service": true,
+            "service_position": true,
+            "judging": false,
+            "tournament": "",
+            "semester": "Winter 2020",
+            "points": 30
         }
     ]
 }

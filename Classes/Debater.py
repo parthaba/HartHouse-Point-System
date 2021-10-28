@@ -377,6 +377,9 @@ class Debater:
         curr_num = self._current_semester.num_represent
         four_sem = self.last_four_semester_minus_current()
 
+        if len(four_sem) == 0:
+            return 0
+
         if (curr_num - 0.5 == four_sem[0] or
                 curr_num - 1 == four_sem[0] or
                 curr_num - 1.5 == four_sem[0]):

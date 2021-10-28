@@ -399,7 +399,9 @@ class Debater:
             if sem.find_entry_debater_id(self.debater_id):
                 semesters_debated += 1
 
-        if semesters_debated == 1:
+        if semesters_debated == 0:
+            return 0
+        elif semesters_debated == 1:
             return 4
         elif semesters_debated == 2:
             return 2

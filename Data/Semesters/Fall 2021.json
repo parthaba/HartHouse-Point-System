@@ -1,1 +1,92 @@
-{"entry":  []}
+{
+    "entry": [
+        {
+            "entry_id": 332371,
+            "id_debater": 357944,
+            "name": "Serena Yuan",
+            "service": true,
+            "service_position": true,
+            "judging": false,
+            "tournament": "",
+            "semester": "Fall 2021",
+            "points": 24
+        },
+        {
+            "entry_id": 541170,
+            "id_debater": 463871,
+            "name": "Arpi Yang",
+            "service": true,
+            "service_position": true,
+            "judging": false,
+            "tournament": "",
+            "semester": "Fall 2021",
+            "points": 9
+        },
+        {
+            "entry_id": 680994,
+            "id_debater": 522130,
+            "name": "Valerie Pang",
+            "service": true,
+            "service_position": true,
+            "judging": false,
+            "tournament": "",
+            "semester": "Fall 2021",
+            "points": 11
+        },
+        {
+            "entry_id": 779942,
+            "id_debater": 588665,
+            "name": "Elgin Lin",
+            "service": true,
+            "service_position": true,
+            "judging": false,
+            "tournament": "",
+            "semester": "Fall 2021",
+            "points": 24
+        },
+        {
+            "entry_id": 484364,
+            "id_debater": 108881,
+            "name": "Nadia Gericke",
+            "service": true,
+            "service_position": true,
+            "judging": false,
+            "tournament": "",
+            "semester": "Fall 2021",
+            "points": 11
+        },
+        {
+            "entry_id": 308869,
+            "id_debater": 826186,
+            "name": "Mia Feldman",
+            "service": true,
+            "service_position": true,
+            "judging": false,
+            "tournament": "",
+            "semester": "Fall 2021",
+            "points": 11
+        },
+        {
+            "entry_id": 564871,
+            "id_debater": 158181,
+            "name": "Amalie Wilkinson",
+            "service": true,
+            "service_position": true,
+            "judging": false,
+            "tournament": "",
+            "semester": "Fall 2021",
+            "points": 11
+        },
+        {
+            "entry_id": 421106,
+            "id_debater": 588665,
+            "name": "Elgin Lin",
+            "service": true,
+            "service_position": false,
+            "judging": false,
+            "tournament": "",
+            "semester": "Fall 2021",
+            "points": 2
+        }
+    ]
+}

@@ -96,7 +96,7 @@
             "service_position": true,
             "judging": false,
             "tournament": "",
-            "semester": "Winter 2020",
+            "semester": "Winter 2021",
             "points": 12
         },
         {
@@ -109,105 +109,6 @@
             "tournament": "",
             "semester": "Winter 2021",
             "points": 5
-        },
-        {
-            "entry_id": 988531,
-            "id_debater": 119567,
-            "name": "Chris Pang",
-            "service": false,
-            "service_position": false,
-            "judging": false,
-            "tournament": "NorAms",
-            "semester": "Winter 2020",
-            "points": 51.81818181818182
-        },
-        {
-            "entry_id": 918746,
-            "id_debater": 119567,
-            "name": "Chris Pang",
-            "service": false,
-            "service_position": false,
-            "judging": false,
-            "tournament": "Seagram IV",
-            "semester": "Winter 2020",
-            "points": 16.166666666666664
-        },
-        {
-            "entry_id": 335040,
-            "id_debater": 119567,
-            "name": "Chris Pang",
-            "service": false,
-            "service_position": false,
-            "judging": true,
-            "tournament": "CP Nationals",
-            "semester": "Winter 2020",
-            "points": 18
-        },
-        {
-            "entry_id": 604562,
-            "id_debater": 119567,
-            "name": "Chris Pang",
-            "service": false,
-            "service_position": false,
-            "judging": false,
-            "tournament": "Discord Cup",
-            "semester": "Winter 2020",
-            "points": 27.666666666666664
-        },
-        {
-            "entry_id": 738771,
-            "id_debater": 119567,
-            "name": "Chris Pang",
-            "service": false,
-            "service_position": false,
-            "judging": false,
-            "tournament": "Princeton RR",
-            "semester": "Winter 2020",
-            "points": 54.0
-        },
-        {
-            "entry_id": 262388,
-            "id_debater": 119567,
-            "name": "Chris Pang",
-            "service": false,
-            "service_position": false,
-            "judging": false,
-            "tournament": "Doxbridge 1",
-            "semester": "Winter 2020",
-            "points": 33.0
-        },
-        {
-            "entry_id": 138545,
-            "id_debater": 119567,
-            "name": "Chris Pang",
-            "service": false,
-            "service_position": false,
-            "judging": false,
-            "tournament": "Doxbridge 2",
-            "semester": "Winter 2020",
-            "points": 39.23741007194245
-        },
-        {
-            "entry_id": 128795,
-            "id_debater": 119567,
-            "name": "Chris Pang",
-            "service": false,
-            "service_position": false,
-            "judging": false,
-            "tournament": "Evodio Cup",
-            "semester": "Winter 2020",
-            "points": 16.615384615384613
-        },
-        {
-            "entry_id": 591953,
-            "id_debater": 119567,
-            "name": "Chris Pang",
-            "service": true,
-            "service_position": true,
-            "judging": false,
-            "tournament": "",
-            "semester": "Winter 2020",
-            "points": 12
         },
         {
             "entry_id": 885003,
@@ -2155,6 +2056,28 @@
             "tournament": "Socialism Open",
             "semester": "Winter 2021",
             "points": 25.333333333333336
+        },
+        {
+            "entry_id": 806163,
+            "id_debater": 168895,
+            "name": "Simren Sharma",
+            "service": true,
+            "service_position": false,
+            "judging": false,
+            "tournament": "",
+            "semester": "Winter 2021",
+            "points": 12
+        },
+        {
+            "entry_id": 426536,
+            "id_debater": 168895,
+            "name": "Simren Sharma",
+            "service": true,
+            "service_position": true,
+            "judging": false,
+            "tournament": "",
+            "semester": "Winter 2021",
+            "points": 12
         }
     ]
 }

@@ -25,7 +25,7 @@ class Debater:
     """
 
     debater_id: int
-    working_points: int
+    working_points: float
     tour_attended: dict
     name: str
     _current_semester: Semester
@@ -100,6 +100,15 @@ class Debater:
                 '--- Tournaments/Events Attended --- \n' +
                 self.all_relevant_tourn_str().strip('\n')
         )
+
+    def set_working_points(self, points: float):
+        """Setter method for self.working_points."""
+        self.working_points = points
+
+    def reset_debater(self, name: str, points: float):
+        """Set name and point values for a Debater object."""
+        self.name = name
+        self.working_points = points
 
     def return_tournaments(self) -> str:
         """ Return all tournaments attended """
@@ -308,6 +317,10 @@ class Debater:
                     return_str += self.get_top_five_sem_returnstr(sem)
         return return_str
 
+    def return_semester_breakdown(self, sem: str):
+        """Return the relevant tournaments and their corresponding point totals from a given semester."""
+        # TODO: Implement this function
+
     def calculate_service_points_sem(self, sem: Semester, last_in_list: bool) -> int:
         """
         Calculate a debaters service points in one semester
@@ -399,5 +412,3 @@ class Debater:
                    + self.calculate_service_points())
 
 
-chris = Debater(119567)
-print(chris)

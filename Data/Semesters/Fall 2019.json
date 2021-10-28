@@ -76,6 +76,28 @@
             "tournament": "Central Novice",
             "semester": "Fall 2019",
             "points": 9
+        },
+        {
+            "entry_id": 279111,
+            "id_debater": 168895,
+            "name": "Simren Sharma",
+            "service": false,
+            "service_position": false,
+            "judging": true,
+            "tournament": "HHIV",
+            "semester": "Fall 2019",
+            "points": 9
+        },
+        {
+            "entry_id": 502278,
+            "id_debater": 168895,
+            "name": "Simren Sharma",
+            "service": false,
+            "service_position": false,
+            "judging": false,
+            "tournament": "Central Novice",
+            "semester": "Fall 2019",
+            "points": 15.277777777777779
         }
     ]
 }

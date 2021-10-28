@@ -19,12 +19,12 @@ class AddEntry:
                      "Winter 2020": WINTER_2021,
                      "Fall 2020": FALL_2020,
                      "Winter 2021": WINTER_2021,
-                     "Fall 2017": FALL_2017,
                      "Fall 2018": FALL_2018,
                      "Winter 2019": WINTER_2019,
-                     "Winter 2018": WINTER_2018}
+                     "Winter 2018": WINTER_2018,
+                     "Fall 2021": FALL_2021}
 
-    SEMESTER_LIST = ['Fall 2017', 'Fall 2018', 'Fall 2019', 'Fall 2020',
+    SEMESTER_LIST = ['Fall 2021', 'Fall 2018', 'Fall 2019', 'Fall 2020',
                      'Winter 2018', 'Winter 2019', 'Winter 2020', 'Winter 2021']
 
     entry_id: int

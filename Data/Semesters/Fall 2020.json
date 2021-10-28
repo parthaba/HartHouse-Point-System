@@ -439,6 +439,83 @@
             "tournament": "N/A",
             "semester": "Fall 2020",
             "points": 1.03
+        },
+        {
+            "entry_id": 949626,
+            "id_debater": 459855,
+            "name": "Saara Meghji",
+            "service": false,
+            "service_position": false,
+            "judging": true,
+            "tournament": "Central Novice",
+            "semester": "Fall 2020",
+            "points": 9
+        },
+        {
+            "entry_id": 165463,
+            "id_debater": 459855,
+            "name": "Saara Meghji",
+            "service": false,
+            "service_position": false,
+            "judging": true,
+            "tournament": "HHIV",
+            "semester": "Fall 2020",
+            "points": 27
+        },
+        {
+            "entry_id": 493686,
+            "id_debater": 459855,
+            "name": "Saara Meghji",
+            "service": false,
+            "service_position": false,
+            "judging": true,
+            "tournament": "NAUDC",
+            "semester": "Fall 2020",
+            "points": 27
+        },
+        {
+            "entry_id": 335760,
+            "id_debater": 459855,
+            "name": "Saara Meghji",
+            "service": false,
+            "service_position": false,
+            "judging": false,
+            "tournament": "Oxford IV",
+            "semester": "Fall 2020",
+            "points": 16.258064516129032
+        },
+        {
+            "entry_id": 962354,
+            "id_debater": 459855,
+            "name": "Saara Meghji",
+            "service": false,
+            "service_position": false,
+            "judging": false,
+            "tournament": "McMaster Pro-am",
+            "semester": "Fall 2020",
+            "points": 0
+        },
+        {
+            "entry_id": 213631,
+            "id_debater": 459855,
+            "name": "Saara Meghji",
+            "service": false,
+            "service_position": false,
+            "judging": false,
+            "tournament": "BP Champs",
+            "semester": "Fall 2020",
+            "points": 6.434782608695652
+        },
+        {
+            "entry_id": 330538,
+            "id_debater": 459855,
+            "name": "Saara Meghji",
+            "service": true,
+            "service_position": true,
+            "judging": false,
+            "tournament": "",
+            "semester": "Fall 2020",
+            "points": 30
         }
     ]
 }

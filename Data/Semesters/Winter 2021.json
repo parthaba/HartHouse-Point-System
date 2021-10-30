@@ -2078,6 +2078,28 @@
             "tournament": "",
             "semester": "Winter 2021",
             "points": 12
+        },
+        {
+            "entry_id": 810517,
+            "id_debater": 286520,
+            "name": "Matt Aydin",
+            "service": true,
+            "service_position": true,
+            "judging": false,
+            "tournament": "",
+            "semester": "Winter 2021",
+            "points": 30
+        },
+        {
+            "entry_id": 559401,
+            "id_debater": 873585,
+            "name": "Tanvir Shahriar",
+            "service": true,
+            "service_position": false,
+            "judging": false,
+            "tournament": "",
+            "semester": "Winter 2021",
+            "points": 3
         }
     ]
 }

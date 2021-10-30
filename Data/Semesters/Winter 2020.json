@@ -164,6 +164,50 @@
             "tournament": "",
             "semester": "Winter 2020",
             "points": 30
+        },
+        {
+            "entry_id": 473150,
+            "id_debater": 286520,
+            "name": "Matt Aydin",
+            "service": false,
+            "service_position": false,
+            "judging": true,
+            "tournament": "NorthAms",
+            "semester": "Winter 2020",
+            "points": 27
+        },
+        {
+            "entry_id": 636132,
+            "id_debater": 286520,
+            "name": "Matt Aydin",
+            "service": false,
+            "service_position": false,
+            "judging": false,
+            "tournament": "Seagram IV",
+            "semester": "Winter 2020",
+            "points": 0
+        },
+        {
+            "entry_id": 187166,
+            "id_debater": 286520,
+            "name": "Matt Aydin",
+            "service": false,
+            "service_position": false,
+            "judging": false,
+            "tournament": "Leger",
+            "semester": "Winter 2020",
+            "points": 12.8
+        },
+        {
+            "entry_id": 737669,
+            "id_debater": 286520,
+            "name": "Matt Aydin",
+            "service": false,
+            "service_position": false,
+            "judging": false,
+            "tournament": "CP Nats",
+            "semester": "Winter 2020",
+            "points": 0
         }
     ]
 }

@@ -147,6 +147,10 @@ class Debater:
             if debater_list:
                 sem_list.append(sem)
 
+        # If the debater has not debated in any semesters, return an empty list.
+        if len(sem_list) == 0:
+            return []
+
         # Determine the highest semester this debater has debated in
         max_sem = max(sem_list)
         max_date = max_sem.num_represent
@@ -360,6 +364,9 @@ class Debater:
         three_sem = self.last_four_semesters()
 
         service_points = 0
+        # If the debater has not done any service, return 0.
+        if len(three_sem) == 0:
+            return service_points
 
         if curr_num == three_sem[0]:
             service_points += self.calculate_service_points_sem(three_sem[0], False)
@@ -375,7 +382,7 @@ class Debater:
                 if curr_num - 2 <= sem.num_represent:
                     service_points += self.calculate_service_points_sem(sem, True)
 
-        return max(service_points, 30)
+        return min(service_points, 30)
 
     def calculate_comp_points(self) -> int:
         comp_points = 0

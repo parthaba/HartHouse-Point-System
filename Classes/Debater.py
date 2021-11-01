@@ -305,16 +305,21 @@ class Debater:
         curr_num = self._current_semester.num_represent
         four_sem = self.last_four_semester_minus_current()
 
-        if (curr_num - 0.5 == four_sem[0] or
+        if len(four_sem) == 0:
+            return_str = ""
+
+        elif (curr_num - 0.5 == four_sem[0] or
                 curr_num - 1 == four_sem[0] or
                 curr_num - 1.5 == four_sem[0]):
 
             for sem in four_sem:
                 return_str += self.get_top_five_sem_returnstr(sem)
+
         else:
             for sem in four_sem:
                 if curr_num - 3 <= sem.num_represent:
                     return_str += self.get_top_five_sem_returnstr(sem)
+
         return return_str
 
     def return_semester_breakdown(self, sem: str):

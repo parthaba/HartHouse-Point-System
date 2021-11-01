@@ -2100,6 +2100,17 @@
             "tournament": "",
             "semester": "Winter 2021",
             "points": 3
+        },
+        {
+            "entry_id": 368205,
+            "id_debater": 522130,
+            "name": "Valerie Pang",
+            "service": true,
+            "service_position": false,
+            "judging": false,
+            "tournament": "",
+            "semester": "Winter 2021",
+            "points": 6
         }
     ]
 }

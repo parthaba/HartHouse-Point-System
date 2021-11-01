@@ -736,6 +736,50 @@
             "tournament": "",
             "semester": "Fall 2020",
             "points": 6
+        },
+        {
+            "entry_id": 184688,
+            "id_debater": 522130,
+            "name": "Valerie Pang",
+            "service": false,
+            "service_position": false,
+            "judging": true,
+            "tournament": "HHIV",
+            "semester": "Fall 2020",
+            "points": 9
+        },
+        {
+            "entry_id": 777951,
+            "id_debater": 522130,
+            "name": "Valerie Pang",
+            "service": false,
+            "service_position": false,
+            "judging": true,
+            "tournament": "Pre-WUDC Korea",
+            "semester": "Fall 2020",
+            "points": 9
+        },
+        {
+            "entry_id": 223747,
+            "id_debater": 522130,
+            "name": "Valerie Pang",
+            "service": false,
+            "service_position": false,
+            "judging": true,
+            "tournament": "McMaster Pro-Am",
+            "semester": "Fall 2020",
+            "points": 3
+        },
+        {
+            "entry_id": 527031,
+            "id_debater": 522130,
+            "name": "Valerie Pang",
+            "service": true,
+            "service_position": false,
+            "judging": false,
+            "tournament": "",
+            "semester": "Fall 2020",
+            "points": 5
         }
     ]
 }

@@ -96,7 +96,7 @@ class Debater:
         return (
                 'Name: ' + self.name + '\n' +
                 'ID: ' + str(self.debater_id) + '\n' +
-                'Total Points: '+ str(self.working_points) + '\n' +
+                'Total Points: ' + str(self.working_points) + '\n' +
                 '--- Tournaments/Events Attended --- \n' +
                 self.all_relevant_tourn_str().strip('\n')
         )
@@ -156,7 +156,7 @@ class Debater:
         max_date = max_sem.num_represent
 
         # If this debater's last semester was Fall:
-        if max_date % 1 == 0:
+        if max_date % 1 != 0:
             one_sem_before = Semester("Winter " + str(int(max_date)), "Winter " + str(int(max_date)) + ".json")
             two_sem_before = Semester("Fall " + str(int(max_date - 1)), "Fall " + str(int(max_date - 1)) + ".json")
             three_sem_before = Semester("Winter " + str(int(max_date - 1)),
@@ -211,7 +211,7 @@ class Debater:
         max_date = max_sem.num_represent
 
         # If this debater's last semester was Fall:
-        if max_date % 1 == 0:
+        if max_date % 1 != 0:
             one_sem_before = Semester("Winter " + str(int(max_date)), "Winter " + str(int(max_date)) + ".json")
             two_sem_before = Semester("Fall " + str(int(max_date - 1)), "Fall " + str(int(max_date - 1)) + ".json")
             three_sem_before = Semester("Winter " + str(int(max_date - 1)),
@@ -242,6 +242,9 @@ class Debater:
         for entry in entry_list:
             if (entry['semester'] == sem.semester) and (entry['service'] is False):
                 filtered_list.append(entry)
+
+        if len(filtered_list) == 0:
+            return points
 
         # Organizing the filtered list
         # This will sort the list by points in descending order
@@ -282,6 +285,9 @@ class Debater:
             if (entry['semester'] == sem.semester) and (entry['service'] is False):
                 filtered_list.append(entry)
 
+        if len(filtered_list) == 0:
+            return return_str
+
         # Organizing the filtered list
         # This will sort the list by points in descending order
         filtered_list.sort(key=lambda x: x.get('points'), reverse=True)
@@ -291,12 +297,14 @@ class Debater:
             # Check if the tournament was judging or competitive; add points accordingly
             if entry["judging"]:
                 tourn_counter += 1
-                return_str = return_str + entry["semester"] + ": " + entry["tournament"] + ' (Judging) > ' + str(entry["points"]) + '\n'
+                return_str = return_str + entry["semester"] + ": " + entry["tournament"] + ' (Judging) > ' + str(
+                    entry["points"]) + '\n'
 
             elif comp_tourn < 3:
                 tourn_counter += 1
                 comp_tourn += 1
-                return_str = return_str + entry["semester"] + ": " + entry["tournament"] + ' > ' + str(entry["points"]) + '\n'
+                return_str = return_str + entry["semester"] + ": " + entry["tournament"] + ' > ' + str(
+                    entry["points"]) + '\n'
 
             # Can only have 5 tournaments max
             if tourn_counter == 5:
@@ -313,8 +321,8 @@ class Debater:
             return_str = ""
 
         elif (curr_num - 0.5 == four_sem[0] or
-                curr_num - 1 == four_sem[0] or
-                curr_num - 1.5 == four_sem[0]):
+              curr_num - 1 == four_sem[0] or
+              curr_num - 1.5 == four_sem[0]):
 
             for sem in four_sem:
                 return_str += self.get_top_five_sem_returnstr(sem)
@@ -421,12 +429,12 @@ class Debater:
             return 4 / 3
         return 1
 
-    def calculate_total_points(self) -> int:
+    def calculate_total_points(self) -> float:
         """
         Calculate a debaters total relevant points
         """
 
-        return int((self.multiplier() * self.calculate_comp_points())
-                   + self.calculate_service_points())
+        return ((self.multiplier() * self.calculate_comp_points())
+                + self.calculate_service_points())
 
 

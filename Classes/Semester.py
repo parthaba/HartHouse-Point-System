@@ -24,9 +24,9 @@ class Semester:
         self.semester_file = semester_file
 
         if semester[0] == 'W':
-            self.num_represent = int(semester[7:11]) + 0.5
+            self.num_represent = int(semester[7:11])
         else:
-            self.num_represent = int(semester[5:9])
+            self.num_represent = int(semester[5:9]) + 0.5
 
         abs_path = os.getcwd()
         sem_directory = abs_path + '/../Data/Semesters/'

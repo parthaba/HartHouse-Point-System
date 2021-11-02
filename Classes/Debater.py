@@ -402,6 +402,7 @@ class Debater:
             return 2
         elif semesters_debated == 3:
             return 4 / 3
+        return 1
 
     def calculate_total_points(self) -> int:
         """

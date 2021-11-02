@@ -334,10 +334,47 @@ class Debater:
 
         return return_str
 
-    def return_semester_breakdown(self, sem: str):
+    def return_semester_breakdown(self, seme: str):
         """Return the relevant tournaments and their corresponding point totals from a given semester."""
-        # TODO: Implement this function
+        sem = Semester(seme, seme+".json")
+        tourn_counter = 0  # Keeps count of total tournaments up to 5
+        comp_tourn = 0  # Keeps count of total competitive tournaments up to 3
+        return_str = ''
 
+        entry_list = sem.find_entry_debater_id(self.debater_id)
+        filtered_list = []
+
+        # Creating the filtered list one tournament at a time
+        for entry in entry_list:
+            if (entry['semester'] == sem.semester) and (entry['service'] is False):
+                filtered_list.append(entry)
+
+        if len(filtered_list) == 0:
+            return return_str
+
+        # Organizing the filtered list
+        # This will sort the list by points in descending order
+        filtered_list.sort(key=lambda x: x.get('points'), reverse=True)
+
+        for entry in filtered_list:
+
+            # Check if the tournament was judging or competitive; add points accordingly
+            if entry["judging"]:
+                tourn_counter += 1
+                return_str = return_str + entry["semester"] + ": " + entry["tournament"] + ' (Judging) > ' + str(
+                    entry["points"]) + '\n'
+
+            elif comp_tourn < 3:
+                tourn_counter += 1
+                comp_tourn += 1
+                return_str = return_str + entry["semester"] + ": " + entry["tournament"] + ' > ' + str(
+                    entry["points"]) + '\n'
+
+            # Can only have 5 tournaments max
+            if tourn_counter == 5:
+                break
+
+        return return_str
     def calculate_service_points_sem(self, sem: Semester, last_in_list: bool) -> int:
         """
         Calculate a debaters service points in one semester
@@ -436,5 +473,3 @@ class Debater:
 
         return ((self.multiplier() * self.calculate_comp_points())
                 + self.calculate_service_points())
-
-

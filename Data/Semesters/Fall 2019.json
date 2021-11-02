@@ -98,6 +98,94 @@
             "tournament": "Central Novice",
             "semester": "Fall 2019",
             "points": 15.277777777777779
+        },
+        {
+            "entry_id": 402268,
+            "id_debater": 459855,
+            "name": "Saara Meghji",
+            "service": false,
+            "service_position": false,
+            "judging": true,
+            "tournament": "NAUDC",
+            "semester": "Fall 2019",
+            "points": 9
+        },
+        {
+            "entry_id": 938061,
+            "id_debater": 459855,
+            "name": "Saara Meghji",
+            "service": false,
+            "service_position": false,
+            "judging": false,
+            "tournament": "Central Novice",
+            "semester": "Fall 2019",
+            "points": 17.11111111111111
+        },
+        {
+            "entry_id": 595289,
+            "id_debater": 459855,
+            "name": "Saara Meghji",
+            "service": false,
+            "service_position": false,
+            "judging": true,
+            "tournament": "HHIV",
+            "semester": "Fall 2019",
+            "points": 9
+        },
+        {
+            "entry_id": 670995,
+            "id_debater": 459855,
+            "name": "Saara Meghji",
+            "service": false,
+            "service_position": false,
+            "judging": false,
+            "tournament": "BP Champs",
+            "semester": "Fall 2019",
+            "points": 17.901639344262296
+        },
+        {
+            "entry_id": 929374,
+            "id_debater": 286520,
+            "name": "Matt Aydin",
+            "service": false,
+            "service_position": false,
+            "judging": true,
+            "tournament": "Central Novice",
+            "semester": "Fall 2019",
+            "points": 9
+        },
+        {
+            "entry_id": 588046,
+            "id_debater": 286520,
+            "name": "Matt Aydin",
+            "service": false,
+            "service_position": false,
+            "judging": true,
+            "tournament": "HHIV",
+            "semester": "Fall 2019",
+            "points": 27
+        },
+        {
+            "entry_id": 623728,
+            "id_debater": 286520,
+            "name": "Matt Aydin",
+            "service": false,
+            "service_position": false,
+            "judging": false,
+            "tournament": "Chancellors Cup",
+            "semester": "Fall 2019",
+            "points": 14.666666666666668
+        },
+        {
+            "entry_id": 583688,
+            "id_debater": 286520,
+            "name": "Matt Aydin",
+            "service": false,
+            "service_position": false,
+            "judging": false,
+            "tournament": "McMaster Pro-Am",
+            "semester": "Fall 2019",
+            "points": 6.484848484848485
         }
     ]
 }

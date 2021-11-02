@@ -41,7 +41,8 @@ class Qualifier:
 
     def make_teams(self) -> List[Team]:
         """Create Team objects to populate self.teams"""
-        team_maker = TeamMaker(self.limit)
+        team_maker = TeamMaker(self.number_of_teams)
+        team_maker.create_team_ids()
         return team_maker.create_team_list()
 
     def compile_teams(self) -> None:
@@ -59,7 +60,6 @@ class Qualifier:
         for team in qualifying_teams:
             print(team.team_name + "\n")
 
-        print(self.team_ranks)
 
 
 

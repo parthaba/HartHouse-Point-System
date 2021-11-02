@@ -147,6 +147,10 @@ class Debater:
             if debater_list:
                 sem_list.append(sem)
 
+        # If the debater has not debated in any semesters, return an empty list.
+        if len(sem_list) == 0:
+            return []
+
         # Determine the highest semester this debater has debated in
         max_sem = max(sem_list)
         max_date = max_sem.num_represent
@@ -305,16 +309,21 @@ class Debater:
         curr_num = self._current_semester.num_represent
         four_sem = self.last_four_semester_minus_current()
 
-        if (curr_num - 0.5 == four_sem[0] or
+        if len(four_sem) == 0:
+            return_str = ""
+
+        elif (curr_num - 0.5 == four_sem[0] or
                 curr_num - 1 == four_sem[0] or
                 curr_num - 1.5 == four_sem[0]):
 
             for sem in four_sem:
                 return_str += self.get_top_five_sem_returnstr(sem)
+
         else:
             for sem in four_sem:
                 if curr_num - 3 <= sem.num_represent:
                     return_str += self.get_top_five_sem_returnstr(sem)
+
         return return_str
 
     def return_semester_breakdown(self, sem: str):
@@ -355,6 +364,9 @@ class Debater:
         three_sem = self.last_four_semesters()
 
         service_points = 0
+        # If the debater has not done any service, return 0.
+        if len(three_sem) == 0:
+            return service_points
 
         if curr_num == three_sem[0]:
             service_points += self.calculate_service_points_sem(three_sem[0], False)
@@ -370,12 +382,15 @@ class Debater:
                 if curr_num - 2 <= sem.num_represent:
                     service_points += self.calculate_service_points_sem(sem, True)
 
-        return max(service_points, 30)
+        return min(service_points, 30)
 
     def calculate_comp_points(self) -> int:
         comp_points = 0
         curr_num = self._current_semester.num_represent
         four_sem = self.last_four_semester_minus_current()
+
+        if len(four_sem) == 0:
+            return 0
 
         if (curr_num - 0.5 == four_sem[0] or
                 curr_num - 1 == four_sem[0] or
@@ -396,7 +411,9 @@ class Debater:
             if sem.find_entry_debater_id(self.debater_id):
                 semesters_debated += 1
 
-        if semesters_debated == 1:
+        if semesters_debated == 0:
+            return 0
+        elif semesters_debated == 1:
             return 4
         elif semesters_debated == 2:
             return 2

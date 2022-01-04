@@ -33,7 +33,4 @@ class Team:
 
     def calculate_points(self) -> float:
         """Calculate the total number of working points for this team."""
-        debater1 = Debater(self.debater_ids[0])
-        debater2 = Debater(self.debater_ids[1])
-
-        return debater1.working_points + debater2.working_points
+        return sum([Debater(debater_id).working_points for debater_id in self.debater_ids])

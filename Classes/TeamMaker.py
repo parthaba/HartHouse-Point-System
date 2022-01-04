@@ -28,8 +28,11 @@ class TeamMaker:
         for x in range(self.number_of_teams):
             debater_one = int(input("Input debater id of first debater in the format <id_1> "
                           "for team " + str(current_team) + "."))
+            print(Debater(debater_one).name)
+
             debater_two = int(input("Input debater id of second debater in the format <id_2> "
                           "for team " + str(current_team) + "."))
+            print(Debater(debater_two).name)
 
             current_team += 1
             self.team_list.append([debater_one, debater_two])

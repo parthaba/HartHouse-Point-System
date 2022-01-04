@@ -5,7 +5,7 @@ from Classes.TeamMaker import TeamMaker
 
 class Qualifier:
     """A class for handling tournament qualifiers. Can handle non-tryout qualifiers
-    independently.
+    independently. There are two ways to add teams: populate_qualifier_textUI and set_team_list.
 
     Instance Attributes:
         - teams: a list of teams attending the qualifier (and the respective debater IDs
@@ -35,9 +35,26 @@ class Qualifier:
         self.team_points = {}
         self.team_ranks = []
 
+    def set_team_list(self, team_list: List[List[int]]) -> None:
+        """Set self.teams using a list of debater IDs"""
+        new_qual = TeamMaker(self.number_of_teams)
+        new_qual.team_list = team_list
+        self.teams = new_qual.create_team_list()
+        self.compile_teams()
+
+    def populate_qualifier_text_UI(self) -> None:
+        """Make teams and compile everything for the qualifier."""
         # Instantiate self.teams, self._team_points, and self._team_ranks
         self.teams = self.make_teams()
         self.compile_teams()
+
+    def __str__(self):
+        """Display string of qualifier."""
+        team_string = ''
+        for team in self.team_ranks:
+            team_string = team_string + team.team_name + ": " + str(team.working_point_total) + "\n"
+
+        return team_string
 
     def make_teams(self) -> List[Team]:
         """Create Team objects to populate self.teams"""
@@ -59,7 +76,3 @@ class Qualifier:
 
         for team in qualifying_teams:
             print(team.team_name + "\n")
-
-
-
-

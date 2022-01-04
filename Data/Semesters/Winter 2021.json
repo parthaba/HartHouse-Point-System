@@ -343,8 +343,8 @@
         },
         {
             "entry_id": 813960,
-            "id_debater": 138374,
-            "name": "Fatemeh Nami",
+            "id_debater": 131156,
+            "name": "Fatema Nami",
             "service": false,
             "service_position": false,
             "judging": false,
@@ -783,8 +783,8 @@
         },
         {
             "entry_id": 650990,
-            "id_debater": 138374,
-            "name": "Fatemeh Nami",
+            "id_debater": 131156,
+            "name": "Fatema Nami",
             "service": false,
             "service_position": false,
             "judging": false,
@@ -1399,8 +1399,8 @@
         },
         {
             "entry_id": 128964,
-            "id_debater": 138374,
-            "name": "Fatemeh Nami",
+            "id_debater": 131156,
+            "name": "Fatema Nami",
             "service": false,
             "service_position": false,
             "judging": false,
@@ -1626,7 +1626,7 @@
             "judging": true,
             "tournament": "Leger Cup",
             "semester": "Winter 2021",
-            "points": 3
+            "points": 6
         },
         {
             "entry_id": 637108,
@@ -1637,7 +1637,7 @@
             "judging": true,
             "tournament": "Leger Cup",
             "semester": "Winter 2021",
-            "points": 3
+            "points": 6
         },
         {
             "entry_id": 309899,
@@ -1894,8 +1894,8 @@
         },
         {
             "entry_id": 521929,
-            "id_debater": 138374,
-            "name": "Fatemeh Nami",
+            "id_debater": 131156,
+            "name": "Fatema Nami",
             "service": false,
             "service_position": false,
             "judging": false,
@@ -2111,6 +2111,105 @@
             "tournament": "",
             "semester": "Winter 2021",
             "points": 6
+        },
+        {
+            "entry_id": 248113,
+            "id_debater": 547963,
+            "name": "Muzzi Godil",
+            "service": false,
+            "service_position": false,
+            "judging": false,
+            "tournament": "NorthAms",
+            "semester": "Winter 2021",
+            "points": 31.3125
+        },
+        {
+            "entry_id": 116660,
+            "id_debater": 547963,
+            "name": "Muzzi Godil",
+            "service": false,
+            "service_position": false,
+            "judging": false,
+            "tournament": "Socialism Open",
+            "semester": "Winter 2021",
+            "points": 33.46666666666667
+        },
+        {
+            "entry_id": 881376,
+            "id_debater": 547963,
+            "name": "Muzzi Godil",
+            "service": false,
+            "service_position": false,
+            "judging": false,
+            "tournament": "KCL Open",
+            "semester": "Winter 2021",
+            "points": 20.51162790697674
+        },
+        {
+            "entry_id": 177284,
+            "id_debater": 286520,
+            "name": "Matt Aydin",
+            "service": false,
+            "service_position": false,
+            "judging": false,
+            "tournament": "Princeton IV",
+            "semester": "Winter 2021",
+            "points": 42.599999999999994
+        },
+        {
+            "entry_id": 286254,
+            "id_debater": 286520,
+            "name": "Matt Aydin",
+            "service": false,
+            "service_position": false,
+            "judging": false,
+            "tournament": "Colgate IV",
+            "semester": "Winter 2021",
+            "points": 32.8235294117647
+        },
+        {
+            "entry_id": 175116,
+            "id_debater": 517998,
+            "name": "Eric Zhao",
+            "service": true,
+            "service_position": true,
+            "judging": false,
+            "tournament": "",
+            "semester": "Winter 2021",
+            "points": 30
+        },
+        {
+            "entry_id": 162239,
+            "id_debater": 243512,
+            "name": "Adam Banihani",
+            "service": false,
+            "service_position": false,
+            "judging": false,
+            "tournament": "Imperial IV",
+            "semester": "Winter 2021",
+            "points": 9.12
+        },
+        {
+            "entry_id": 841085,
+            "id_debater": 239579,
+            "name": "Anna Clark",
+            "service": true,
+            "service_position": true,
+            "judging": false,
+            "tournament": "",
+            "semester": "Winter 2021",
+            "points": 7
+        },
+        {
+            "entry_id": 271194,
+            "id_debater": 158181,
+            "name": "Amalie Wilkinson",
+            "service": true,
+            "service_position": true,
+            "judging": false,
+            "tournament": "",
+            "semester": "Winter 2021",
+            "points": 24
         }
     ]
 }

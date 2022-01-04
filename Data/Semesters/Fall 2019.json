@@ -186,6 +186,72 @@
             "tournament": "McMaster Pro-Am",
             "semester": "Fall 2019",
             "points": 6.484848484848485
+        },
+        {
+            "entry_id": 775622,
+            "id_debater": 517998,
+            "name": "Eric Zhao",
+            "service": false,
+            "service_position": false,
+            "judging": true,
+            "tournament": "Central Novice",
+            "semester": "Fall 2019",
+            "points": 9
+        },
+        {
+            "entry_id": 104373,
+            "id_debater": 517998,
+            "name": "Eric Zhao",
+            "service": false,
+            "service_position": false,
+            "judging": false,
+            "tournament": "Yale IV",
+            "semester": "Fall 2019",
+            "points": 1.8876404494382015
+        },
+        {
+            "entry_id": 649124,
+            "id_debater": 517998,
+            "name": "Eric Zhao",
+            "service": false,
+            "service_position": false,
+            "judging": true,
+            "tournament": "HHIV",
+            "semester": "Fall 2019",
+            "points": 27
+        },
+        {
+            "entry_id": 427826,
+            "id_debater": 517998,
+            "name": "Eric Zhao",
+            "service": false,
+            "service_position": false,
+            "judging": false,
+            "tournament": "McMaster Pro-Am",
+            "semester": "Fall 2019",
+            "points": 7.454545454545455
+        },
+        {
+            "entry_id": 270180,
+            "id_debater": 517998,
+            "name": "Eric Zhao",
+            "service": false,
+            "service_position": false,
+            "judging": true,
+            "tournament": "Thailand WUDC ",
+            "semester": "Fall 2019",
+            "points": 45
+        },
+        {
+            "entry_id": 252900,
+            "id_debater": 517998,
+            "name": "Eric Zhao",
+            "service": false,
+            "service_position": false,
+            "judging": false,
+            "tournament": "Winter Carnival",
+            "semester": "Fall 2019",
+            "points": 34.72
         }
     ]
 }

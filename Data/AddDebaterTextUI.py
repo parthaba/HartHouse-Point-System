@@ -8,11 +8,8 @@ class AddDebater:
     # name of the csv file
     FILENAME = "Debaters/id_list.csv"
 
-    name: str
-
-    def __init__(self, name: str):
+    def __init__(self):
         """Create new AddDebater object."""
-        self.name = name
 
     def create_valid_id(self) -> int:
         """Create a valid (unique 6 digit long) ID for a new debater"""
@@ -42,12 +39,12 @@ class AddDebater:
 
         return random.choice(valid_id_list)
 
-    def add_debater_id(self) -> int:
+    def add_debater_id(self) -> None:
         """Add a new debater to id_list.csv. The debater will have a unique, randomized 6 digit
-        number as their ID. return the new ID"""
+        number as their ID."""
 
         # debater name and generated id
-        debater_name = self.name
+        debater_name = input("Enter the name of the debater you want to add: ")
         debater_id = self.create_valid_id()
 
         with open(self.FILENAME, 'a') as csvfile:
@@ -58,4 +55,7 @@ class AddDebater:
             csv_writer.writerow([debater_name, debater_id])
 
         print(debater_name + ": " + str(debater_id) + " has been successfully added!")
-        return debater_id
+
+
+new_debater = AddDebater()
+new_debater.add_debater_id()
